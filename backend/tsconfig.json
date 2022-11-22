@@ -8,8 +8,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "types": ["node"],
-    // "typeRoots": ["src/@types"],
   },
-  // "files": ["src/@types/graphql.d.ts"],
   "include": ["src/**/*"],
 }

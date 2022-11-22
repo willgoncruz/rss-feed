@@ -1,17 +1,9 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-
 import { loadFile } from 'graphql-import-files';
 
+import resolvers from './resolvers';
 const typeDefs = loadFile('./src/schema/schema.graphql');
-
-const feeds = [{ url: 'test' }];
-
-const resolvers = {
-    Query: {
-        feeds: () => feeds,
-    }
-};
 
 const server = new ApolloServer({
     typeDefs,
