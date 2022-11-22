@@ -1,16 +1,9 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
-const typeDefs = `#graphql
+import { loadFile } from 'graphql-import-files';
 
-    type Feed {
-        url: String!
-    }
-
-    type Query {
-        feeds: [Feed]
-    }
-`;
+const typeDefs = loadFile('./src/schema/schema.graphql');
 
 const feeds = [{ url: 'test' }];
 

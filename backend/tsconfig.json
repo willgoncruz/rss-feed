@@ -1,12 +1,15 @@
 {
-    "compilerOptions": {
-      "rootDirs": ["backend"],
-      "outDir": "dist",
-      "lib": ["es2020"],
-      "target": "es2020",
-      "module": "esnext",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "types": ["node"]
-    }
-  }
+  "compilerOptions": {
+    "rootDirs": ["backend"],
+    "outDir": "dist",
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "types": ["node"],
+    // "typeRoots": ["src/@types"],
+  },
+  // "files": ["src/@types/graphql.d.ts"],
+  "include": ["src/**/*"],
+}
