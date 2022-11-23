@@ -2,16 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-import { gql } from '@apollo/client';
-import apolloClient from '../client/apollo-client';
-import { Feed } from '../types/feed';
-
-type Props = {
-  feeds: Feed[];
-};
-
-export default function Home({ feeds }: Props) {
-  console.log('Test: ', feeds);
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -77,22 +68,4 @@ export default function Home({ feeds }: Props) {
       </footer>
     </div>
   )
-}
-
-export async function getServerSideProps() {
-  const { data } = await apolloClient.query({
-    query: gql`
-      query Feeds {
-        feeds {
-          url
-        }
-      }
-    `
-  });
-
-  return {
-    props: {
-      feeds: data.feeds,
-    }
-  };
 }
