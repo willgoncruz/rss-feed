@@ -2,6 +2,11 @@ type Feed {
     url: String!
 }
 
+type Article {
+    name: String!
+}
+
 type Query {
     feeds: [Feed]
+    articles(url: String): [Article]
 }
