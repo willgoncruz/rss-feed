@@ -3,7 +3,7 @@ type Feed {
 }
 
 type Article {
-    name: String!
+    title: String!
 }
 
 type Query {

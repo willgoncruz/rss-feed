@@ -10,7 +10,7 @@ type Props = {
 const GET_ARTICLES = (url: string) => gql`
     query Articles {
         articles(url: "${url}") {
-            name
+            title
         }
     }
 `
@@ -45,7 +45,7 @@ const ActiveFeed = ({ feed }: Props) => {
                 { feed.url }
                 { articles.map((article, i) => 
                     <div key={i}>
-                        {article.name}
+                        {article.title}
                     </div>
                 )}
             </div>

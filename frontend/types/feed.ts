@@ -3,5 +3,5 @@ export type Feed = {
 };
 
 export type Article = {
-    name: string;
+    title: string;
 }
