@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { parseString } from 'xml2js';
 
-const feeds = [{ url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCtNTsm4XIQf-TNk5nntGTOA' }, { url: 'second.rss' }, { url: 'third.rss' }];
+const feeds = () => [{ url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCtNTsm4XIQf-TNk5nntGTOA' }, { url: 'second.rss' }, { url: 'third.rss' }];
 
 const articles = (obj: object, args: { url : string }) => {
     return axios.get(args.url).then((response) => {
@@ -19,7 +19,7 @@ const articles = (obj: object, args: { url : string }) => {
 
 export default {
     Query: {
-        feeds: () => feeds,
+        feeds,
         articles,
     }
 };

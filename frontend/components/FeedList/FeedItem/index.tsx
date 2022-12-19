@@ -1,21 +1,15 @@
-import { Feed } from "../../../types/feed";
 import styled from 'styled-components';
+import { Feed } from '../../../types/feed';
 
 type Props = {
-    feed: Feed;
-}
+  feed: Feed;
+};
 
 const Container = styled.div`
-    font-size: 16px;
-    margin-top: 16px;
+  font-size: 16px;
+  margin-top: 16px;
 `;
 
-const FeedItem = ({ feed }: Props) => {
-    return (
-        <Container>
-            {feed.url}
-        </Container>
-    );
-};
+const FeedItem = ({ feed }: Props) => <Container>{feed.url}</Container>;
 
 export default FeedItem;

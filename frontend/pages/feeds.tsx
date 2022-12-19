@@ -13,55 +13,56 @@ type Props = {
 };
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 `;
 
 const FeedListContainer = styled.div`
-    flex: 1 1 10%;
+  flex: 1 1 10%;
 `;
 
 const ActiveFeedContainer = styled.div`
-    flex: 1 1 90%;
-    margin-left: 16px; 
+  flex: 1 1 90%;
+  margin-left: 16px;
 `;
 
 export default function Feeds({ feeds }: Props) {
-    const [feed, setFeed] = useState<Feed | null>(null);
+  const [feed, setFeed] = useState<Feed | null>(null);
 
-    const onSelectFeed = (index: number) => setFeed(feeds[index]);
+  const onSelectFeed = (index: number) => setFeed(feeds[index]);
 
-    return (
-        <div>
-            <h1>Feeds</h1>
-            <Container>
-                <FeedListContainer>
-                    <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
-                </FeedListContainer>
-                <ActiveFeedContainer>
-                    <ActiveFeed feed={feed} />
-                </ActiveFeedContainer>
-            </Container>
-
-        </div>
-    );
-};
+  return (
+    <div>
+      <h1>Feeds</h1>
+      <Container>
+        <FeedListContainer>
+          <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
+        </FeedListContainer>
+        <ActiveFeedContainer>
+          <ActiveFeed feed={feed} />
+        </ActiveFeedContainer>
+      </Container>
+    </div>
+  );
+}
 
 export async function getServerSideProps() {
-    const { data: { feeds } } = await apolloClient.query({
-        query: gql`
-            query Feeds {
-                feeds {
-                    url
-                }
-            }
-        `
-    });
-
-    return {
-        props: {
-            feeds,
+  const {
+    data: { feeds },
+  } = await apolloClient.query({
+    query: gql`
+      query Feeds {
+        feeds {
+          url
         }
-    }
-};
+      }
+    `,
+  });
+
+  return {
+    props: {
+      feeds,
+    },
+  };
+}

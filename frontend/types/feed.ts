@@ -1,7 +1,7 @@
 export type Feed = {
-    url: string;
+  url: string;
 };
 
 export type Article = {
-    title: string;
-}
+  title: string;
+};
