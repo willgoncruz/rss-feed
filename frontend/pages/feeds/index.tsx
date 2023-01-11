@@ -2,11 +2,11 @@ import { gql } from '@apollo/client';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import apolloClient from '../client/apollo-client';
+import apolloClient from '../../client/apollo-client';
 
-import { Feed } from '../types/feed';
-import FeedList from '../components/FeedList';
-import ActiveFeed from '../components/ActiveFeed';
+import { Feed, Article } from '../../types/feed';
+import FeedList from '../../components/FeedList';
+import ActiveFeed from '../../components/ActiveFeed';
 
 type Props = {
   feeds: Feed[];
@@ -29,6 +29,7 @@ const ActiveFeedContainer = styled.div`
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
+  const [article, setArticle] = useState<Article | null>(null);
 
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
 
@@ -40,8 +41,14 @@ export default function Feeds({ feeds }: Props) {
           <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
         </FeedListContainer>
         <ActiveFeedContainer>
-          <ActiveFeed feed={feed} />
+          <ActiveFeed feed={feed} onSelectArticle={setArticle} />
         </ActiveFeedContainer>
+
+        {article && (
+          <div>
+            <h1>ARTICLE SELECTED: {article.title}</h1>
+          </div>
+        )}
       </Container>
     </div>
   );

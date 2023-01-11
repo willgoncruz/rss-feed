@@ -5,6 +5,7 @@ import apolloClient from '../../client/apollo-client';
 
 type Props = {
   feed: Feed | null;
+  onSelectArticle: Function;
 };
 
 const GET_ARTICLES = (url: string) => gql`
@@ -15,7 +16,7 @@ const GET_ARTICLES = (url: string) => gql`
   }
 `;
 
-const ActiveFeed = ({ feed }: Props) => {
+const ActiveFeed = ({ feed, onSelectArticle }: Props) => {
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
@@ -43,7 +44,9 @@ const ActiveFeed = ({ feed }: Props) => {
       <div>
         {feed.url}
         {articles.map((article, i) => (
-          <div key={i}>{article.title}</div>
+          <div key={i} onClick={() => onSelectArticle(article)}>
+            {article.title}
+          </div>
         ))}
       </div>
     </div>
