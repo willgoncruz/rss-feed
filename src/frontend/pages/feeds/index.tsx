@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import apolloClient from '../../client/apollo-client';
 
-import { Feed, Article } from '../../types/feed';
+import { Feed, Article } from '../../../types';
 import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
 
@@ -43,13 +43,12 @@ export default function Feeds({ feeds }: Props) {
         <ActiveFeedContainer>
           <ActiveFeed feed={feed} onSelectArticle={setArticle} />
         </ActiveFeedContainer>
-
-        {article && (
-          <div>
-            <h1>ARTICLE SELECTED: {article.title}</h1>
-          </div>
-        )}
       </Container>
+      {article && (
+        <div>
+          <h1>ARTICLE SELECTED: {article.title}</h1>
+        </div>
+      )}
     </div>
   );
 }

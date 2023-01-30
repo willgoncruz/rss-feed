@@ -2,8 +2,14 @@ type Feed {
     url: String!
 }
 
+type Author {
+    uri: String!
+    name: String!
+}
+
 type Article {
     title: String!
+    author: Author!
 }
 
 type Query {

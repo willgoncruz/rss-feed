@@ -2,11 +2,11 @@
 
 ## Run development server
 run-server:
-	cd backend && npm run dev
+	npm run dev
 
 ## Run frontend app
 run-front:
-	cd frontend && npm run dev
+	cd src/frontend && npm run dev
 
 lint:
-	cd frontend && npm run lint
+	cd src/frontend && npm run lint

@@ -1,7 +1,8 @@
 import { gql } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import { Feed, Article } from '../../types/feed';
+import { Feed, Article } from '../../../types';
 import apolloClient from '../../client/apollo-client';
+import ArticleCard from '../ArticleCard';
 
 type Props = {
   feed: Feed | null;
@@ -45,7 +46,7 @@ const ActiveFeed = ({ feed, onSelectArticle }: Props) => {
         {feed.url}
         {articles.map((article, i) => (
           <div key={i} onClick={() => onSelectArticle(article)}>
-            {article.title}
+            <ArticleCard article={article} />
           </div>
         ))}
       </div>

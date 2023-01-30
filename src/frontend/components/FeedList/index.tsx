@@ -1,4 +1,4 @@
-import { Feed } from '../../types/feed';
+import { Feed } from '../../../types';
 import FeedItem from './FeedItem';
 
 import { Container, FeedLink } from './style';

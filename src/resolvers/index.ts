@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { parseString } from 'xml2js';
+import { fromRequestData } from './article';
 
 const feeds = () => [{ url: 'https://www.youtube.com/feeds/videos.xml?channel_id=UCtNTsm4XIQf-TNk5nntGTOA' }, { url: 'second.rss' }, { url: 'third.rss' }];
 
@@ -11,7 +12,7 @@ const articles = (obj: object, args: { url : string }) => {
             data = results.feed.entry;
         });
 
-        return data;
+        return fromRequestData(data);
     }).catch((e: Error) => {
         console.error('Error on article call', e);
     });
