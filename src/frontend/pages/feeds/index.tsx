@@ -2,9 +2,9 @@ import { gql } from '@apollo/client';
 import styled from 'styled-components';
 import { useState } from 'react';
 
+import { Feed, Article } from '@types';
 import apolloClient from '../../client/apollo-client';
 
-import { Feed, Article } from '../../../types';
 import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
 

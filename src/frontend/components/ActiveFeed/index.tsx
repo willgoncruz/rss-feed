@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 import { useEffect, useState } from 'react';
-import { Feed, Article } from '../../../types';
+import { Feed, Article } from '@types';
 import apolloClient from '../../client/apollo-client';
 import ArticleCard from '../ArticleCard';
 

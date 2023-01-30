@@ -1,0 +1,33 @@
+{
+  "type": "module",
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend Graphql NMo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "npm run compile && node --experimental-specifier-resolution=node ./dist/app.js",
+    "dev": "nodemon --experimental-specifier-resolution=node ./src/backend/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.1.1",
+    "@graphql-codegen/typescript-graphql-files-modules": "^2.2.1",
+    "apollo-server-express": "^3.11.1",
+    "axios": "^1.2.0",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-import-files": "^1.2.18",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/xml2js": "^0.4.11",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  }
+}

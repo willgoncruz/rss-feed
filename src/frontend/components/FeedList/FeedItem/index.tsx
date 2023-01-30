@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Feed } from '../../../../types';
+import { Feed } from '@types';
 
 type Props = {
   feed: Feed;

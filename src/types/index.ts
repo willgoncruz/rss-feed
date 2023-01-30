@@ -1,2 +1,2 @@
-export { Feed } from './feed';
-export { Article } from './article';
+export type { Feed } from './feed';
+export type { Article } from './article';

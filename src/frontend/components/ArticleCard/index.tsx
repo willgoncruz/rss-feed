@@ -1,4 +1,4 @@
-import { Article } from '../../../types';
+import { Article } from '@types';
 
 type Props = {
   article: Article;

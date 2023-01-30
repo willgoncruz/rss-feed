@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDirs": ["backend"],
+    "rootDirs": ["."],
     "outDir": "dist",
     "lib": ["es2020"],
     "target": "es2020",
@@ -9,6 +9,10 @@
     "esModuleInterop": true,
     "types": ["node"],
     "strict": true,
+    "paths": {
+      "@types": ["../types"],
+      "@types/*": ["../types/*"],
+    },
   },
   "include": ["src/**/*"],
 }
