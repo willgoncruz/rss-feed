@@ -8,5 +8,6 @@ run-server:
 run-front:
 	cd src/frontend && npm run dev
 
+## Checks front code for lint errors 
 lint:
 	cd src/frontend && npm run lint
