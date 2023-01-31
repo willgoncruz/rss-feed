@@ -46,7 +46,10 @@ export default function Feeds({ feeds }: Props) {
       </Container>
       {article && (
         <div>
-          <h1>ARTICLE SELECTED: {article.title}</h1>
+          <h1>ARTICLE SELECTED</h1>
+          <h2>
+            {article.title} - by {article.author.name}
+          </h2>
         </div>
       )}
     </div>

@@ -13,6 +13,9 @@ const GET_ARTICLES = (url: string) => gql`
   query Articles {
     articles(url: "${url}") {
       title
+      author {
+        name
+      }
     }
   }
 `;
