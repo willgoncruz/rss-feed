@@ -2,7 +2,7 @@
 
 ## Run development server
 run-server:
-	npm run dev
+	cd src/backend && npm run dev
 
 ## Run frontend app
 run-front:

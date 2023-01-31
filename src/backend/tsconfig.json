@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDirs": ["."],
     "outDir": "dist",
@@ -9,10 +10,6 @@
     "esModuleInterop": true,
     "types": ["node"],
     "strict": true,
-    "paths": {
-      "@types": ["../types"],
-      "@types/*": ["../types/*"],
-    },
   },
   "include": ["src/**/*"],
 }

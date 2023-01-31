@@ -3,7 +3,7 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import { loadFile } from 'graphql-import-files';
 
 import resolvers from './resolvers';
-const typeDefs = loadFile('./src/backend/schema/schema.graphql');
+const typeDefs = loadFile('./schema/schema.graphql');
 
 const server = new ApolloServer({
     typeDefs,

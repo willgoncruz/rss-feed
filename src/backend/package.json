@@ -6,9 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "generate": "graphql-codegen --config codegen.yml",
     "compile": "tsc",
     "start": "npm run compile && node --experimental-specifier-resolution=node ./dist/app.js",
-    "dev": "nodemon --experimental-specifier-resolution=node ./src/backend/app.ts"
+    "dev": "nodemon --experimental-specifier-resolution=node ./app.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,9 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.16.5",
+    "@graphql-codegen/typescript": "^2.8.8",
+    "@graphql-codegen/typescript-resolvers": "^2.7.13",
     "@types/node": "^18.11.9",
     "@types/xml2js": "^0.4.11",
     "nodemon": "^2.0.20",
