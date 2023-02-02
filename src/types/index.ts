@@ -15,7 +15,14 @@ export type Scalars = {
 export type Article = {
   __typename?: 'Article';
   author: Author;
+  channelId: Scalars['String'];
+  id: Scalars['String'];
+  link: Scalars['String'];
+  media: Media;
+  published: Scalars['String'];
   title: Scalars['String'];
+  updated: Scalars['String'];
+  videoId: Scalars['String'];
 };
 
 export type Author = {
@@ -24,9 +31,38 @@ export type Author = {
   uri: Scalars['String'];
 };
 
+export type Community = {
+  __typename?: 'Community';
+  starRating: StarRating;
+  statistics: Statistics;
+};
+
+export type Content = {
+  __typename?: 'Content';
+  height: Scalars['Int'];
+  type: Scalars['String'];
+  url: Scalars['String'];
+  width: Scalars['Int'];
+};
+
 export type Feed = {
   __typename?: 'Feed';
+  author: Author;
+  channelId: Scalars['String'];
+  id: Scalars['String'];
+  link: Scalars['String'];
+  published: Scalars['String'];
+  title: Scalars['String'];
   url: Scalars['String'];
+};
+
+export type Media = {
+  __typename?: 'Media';
+  // community: Community;
+  content: Content;
+  description: Scalars['String'];
+  thumbnail: Thumbnail;
+  title: Scalars['String'];
 };
 
 export type Query = {
@@ -38,4 +74,24 @@ export type Query = {
 
 export type QueryArticlesArgs = {
   url?: InputMaybe<Scalars['String']>;
+};
+
+export type StarRating = {
+  __typename?: 'StarRating';
+  average: Scalars['Float'];
+  count: Scalars['Int'];
+  max: Scalars['Int'];
+  min: Scalars['Int'];
+};
+
+export type Statistics = {
+  __typename?: 'Statistics';
+  views: Scalars['Int'];
+};
+
+export type Thumbnail = {
+  __typename?: 'Thumbnail';
+  height: Scalars['Int'];
+  url: Scalars['String'];
+  width: Scalars['Int'];
 };

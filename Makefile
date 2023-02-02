@@ -11,3 +11,7 @@ run-front:
 ## Checks front code for lint errors 
 lint:
 	cd src/frontend && npm run lint
+
+## Generate typescript types from graphql schema
+generate:
+	cd src/backend && npm run generate

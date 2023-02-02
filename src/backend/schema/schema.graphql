@@ -1,5 +1,11 @@
 type Feed {
     url: String!
+    link: String!
+    id: String!
+    channelId: String!
+    title: String!
+    author: Author!
+    published: String!
 }
 
 type Author {
@@ -7,9 +13,53 @@ type Author {
     name: String!
 }
 
-type Article {
+type StarRating {
+    count: Int!
+    average: Float!
+    min: Int!
+    max: Int!
+}
+
+type Statistics {
+    views: Int!
+}
+
+type Community {
+    starRating: StarRating!
+    statistics: Statistics!
+}
+
+type Content {
+    url: String!
+    type: String!
+    width: Int!
+    height: Int!
+}
+
+type Thumbnail {
+    url: String!
+    width: Int!
+    height: Int!
+}
+
+type Media {
     title: String!
+    content: Content!
+    thumbnail: Thumbnail!
+    description: String!
+    community: Community!
+}
+
+type Article {
+    id: String!
+    videoId: String!
+    channelId: String!
+    title: String!
+    link: String!
     author: Author!
+    published: String!
+    updated: String!
+    media: Media!
 }
 
 type Query {

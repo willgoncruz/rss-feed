@@ -7,6 +7,9 @@ const query = (url: string) => gql`
       author {
         name
       }
+      media {
+        description
+      }
     }
   }
 `;
