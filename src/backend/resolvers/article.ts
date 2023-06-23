@@ -9,10 +9,10 @@ export const fromRequestData = (data: any): Article[] => {
       title: article['media:group']['media:title'],
       description: article['media:group']['media:description'],
       content: {
-        url: article['media:group']['media:content'].url,
-        type: article['media:group']['media:content'].type,
-        width: article['media:group']['media:content'].width,
-        height: article['media:group']['media:content'].height,
+        url: article['media:group']['media:content']['$'].url,
+        type: article['media:group']['media:content']['$'].type,
+        width: article['media:group']['media:content']['$'].width,
+        height: article['media:group']['media:content']['$'].height,
       },
       thumbnail: {
         url: article['media:group']['media:thumbnail'].url,

@@ -7,6 +7,7 @@ import apolloClient from '../../client/apollo-client';
 
 import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
+import ArticleSelected from '../../components/ArticleSelected';
 
 type Props = {
   feeds: Feed[];
@@ -23,18 +24,22 @@ const FeedListContainer = styled.div`
 `;
 
 const ActiveFeedContainer = styled.div`
-  flex: 1 1 90%;
+  flex: 1 1 30%;
   margin-left: 16px;
+`;
+
+const Page = styled.div`
+  padding: 32px;
 `;
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
-  const [article, setArticle] = useState<Article | null>(null);
+  const [article, setArticle] = useState<Article | undefined>();
 
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
 
   return (
-    <div>
+    <Page>
       <h1>Feeds</h1>
       <Container>
         <FeedListContainer>
@@ -43,16 +48,9 @@ export default function Feeds({ feeds }: Props) {
         <ActiveFeedContainer>
           <ActiveFeed feed={feed} onSelectArticle={setArticle} />
         </ActiveFeedContainer>
+        <ArticleSelected article={article} />
       </Container>
-      {article && (
-        <div>
-          <h1>ARTICLE SELECTED</h1>
-          <h2>
-            {article.title} - by {article.author.name}
-          </h2>
-        </div>
-      )}
-    </div>
+    </Page>
   );
 }
 

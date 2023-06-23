@@ -12,7 +12,8 @@ const articles = (obj: object, args: { url : string }) => {
             data = results.feed.entry;
         });
 
-        return fromRequestData(data);
+        const convertedData = fromRequestData(data);
+        return convertedData;
     }).catch((e: Error) => {
         console.error('Error on article call', e);
     });

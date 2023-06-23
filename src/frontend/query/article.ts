@@ -9,6 +9,12 @@ const query = (url: string) => gql`
       }
       media {
         description
+        content {
+          url
+          type
+          width
+          height
+        }
       }
     }
   }
