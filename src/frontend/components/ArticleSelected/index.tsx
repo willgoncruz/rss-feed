@@ -1,4 +1,5 @@
 import { Article } from '@types';
+import ArticleDisplay from '../ArticleDisplay';
 
 type Props = {
   article?: Article;
@@ -20,6 +21,10 @@ const ArticleSelected = ({ article }: Props) => {
       </div>
       <div>
         <b>Content URL:</b> {article.media.content.url}
+      </div>
+      <div>
+        Article DISPLAY BELLOW
+        <ArticleDisplay media={article.media} />
       </div>
     </div>
   );
