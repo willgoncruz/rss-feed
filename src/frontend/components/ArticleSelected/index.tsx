@@ -1,4 +1,5 @@
 import { Article } from '@types';
+import Head from 'next/head';
 import ArticleDisplay from '../ArticleDisplay';
 
 type Props = {
@@ -13,6 +14,10 @@ const ArticleSelected = ({ article }: Props) => {
   return (
     <div>
       <h1>ARTICLE SELECTED</h1>
+      <Head>
+        <title>{article.title}</title>
+        <meta property="og:title" content={article.title} key="title" />
+      </Head>
       <h2>
         {article.title} - by {article.author.name}
       </h2>
