@@ -17,13 +17,12 @@ func (r *mutationResolver) RemoveElement(ctx context.Context, id *string) (*bool
 
 // Feeds is the resolver for the feeds field.
 func (r *queryResolver) Feeds(ctx context.Context) ([]*model.Feed, error) {
-	// panic(fmt.Errorf("not implemented: Feeds - feeds"))
 	return r.Resolver.Feed.List(ctx), nil
 }
 
 // Articles is the resolver for the articles field.
 func (r *queryResolver) Articles(ctx context.Context, url *string) ([]*model.Article, error) {
-	panic(fmt.Errorf("not implemented: Articles - articles"))
+	return r.Resolver.Article.List(ctx, url), nil
 }
 
 // Mutation returns MutationResolver implementation.
