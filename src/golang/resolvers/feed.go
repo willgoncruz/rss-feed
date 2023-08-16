@@ -5,16 +5,10 @@ import (
 	"rss/graph/model"
 )
 
-type FeedResolver struct {
-	FeedStore []*model.Feed
-}
-
-func New() *FeedResolver {
-	return &FeedResolver{
-		FeedStore: []*model.Feed{},
-	}
-}
+type FeedResolver struct{}
 
 func (f *FeedResolver) List(ctx context.Context) []*model.Feed {
-	return f.FeedStore
+	return []*model.Feed{{
+		URL: "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNTsm4XIQf-TNk5nntGTOA",
+	}}
 }
