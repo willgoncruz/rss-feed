@@ -1,11 +1,8 @@
 ### Makefile to run commands
 
-## Run development server
-run-server:
-	cd src/backend && npm run dev
-
+# Run backend server
 run-back:
-	cd src/golang && PORT=4000 go run main.go
+	cd src/backend && PORT=4000 go run main.go
 
 ## Run frontend app
 run-front:
@@ -18,4 +15,4 @@ lint:
 ## Generate typescript types from graphql schema
 ## cd src/backend && npm run generate
 generate:
-	cd src/golang && go run github.com/99designs/gqlgen generate
+	cd src/backend && go run github.com/99designs/gqlgen generate
