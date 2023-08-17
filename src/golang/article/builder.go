@@ -53,7 +53,7 @@ func (a *ArticleBuilder) Media(entry map[string]interface{}) *ArticleBuilder {
 	content := group["content"].(map[string]interface{})
 
 	width, _ := strconv.Atoi(content["-width"].(string))
-	height, _ := strconv.Atoi(content["-width"].(string))
+	height, _ := strconv.Atoi(content["-height"].(string))
 
 	a.article.Media = &model.Media{
 		Title:       group["title"].(string),
