@@ -2,7 +2,7 @@
 
 # Run backend server
 run-back:
-	cd src/backend && PORT=4000 go run main.go
+	docker-compose --file src/backend/docker-compose.yml up --build
 
 ## Run frontend app
 run-front:
