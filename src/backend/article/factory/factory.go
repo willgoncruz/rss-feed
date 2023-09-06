@@ -1,6 +1,7 @@
-package article
+package factory
 
 import (
+	"rss/article/director"
 	"rss/graph/model"
 )
 
@@ -17,18 +18,16 @@ func Factory() *ArticleFactory {
 }
 
 func (*ArticleFactory) Build(data map[string]interface{}) []*model.Article {
+	articleDirector := director.GetArticleDirector()
+	articleDirector.Decide()
+
 	var entries = data["feed"].(map[string]interface{})["entry"].([]interface{})
 
 	var result = []*model.Article{}
 	for _, entryObj := range entries {
 		entry := entryObj.(map[string]interface{})
 
-		article := Builder().
-			Basic(entry).
-			Video(entry).
-			Media(entry).
-			Author(entry).
-			Build()
+		article := articleDirector.Build(entry)
 
 		result = append(result, article)
 	}

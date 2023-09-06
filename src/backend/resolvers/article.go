@@ -5,9 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"rss/article/factory"
 	"rss/graph/model"
-
-	article "rss/article"
 
 	xj "github.com/basgys/goxml2json"
 )
@@ -20,7 +19,7 @@ func (f *ArticleResolver) List(ctx context.Context, url *string) []*model.Articl
 		return []*model.Article{}
 	}
 
-	return article.Factory().Build(data)
+	return factory.Factory().Build(data)
 }
 
 func (f *ArticleResolver) request(url string) (map[string]interface{}, error) {
