@@ -12,6 +12,10 @@ export type Scalars = {
   Float: number;
 };
 
+export enum ArticleType {
+  Youtube = "youtube",
+};
+
 export type Article = {
   __typename?: 'Article';
   author: Author;
@@ -23,6 +27,7 @@ export type Article = {
   title: Scalars['String'];
   updated: Scalars['String'];
   videoId: Scalars['String'];
+  type: ArticleType;
 };
 
 export type Author = {

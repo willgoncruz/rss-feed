@@ -12,6 +12,7 @@ type Article struct {
 	Published string  `json:"published"`
 	Updated   string  `json:"updated"`
 	Media     *Media  `json:"media"`
+	Type      string  `json:"type"`
 }
 
 type Author struct {

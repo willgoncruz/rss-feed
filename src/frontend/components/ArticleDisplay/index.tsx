@@ -5,10 +5,6 @@ type Props = {
   media: Media;
 };
 
-const ArticleDisplay = ({ media }: Props) => (
-  <div>
-    <YoutubeArticleDisplay media={media} />
-  </div>
-);
+const ArticleDisplay = ({ media }: Props) => <YoutubeArticleDisplay media={media} />;
 
 export default ArticleDisplay;

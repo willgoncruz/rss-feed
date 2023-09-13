@@ -1,5 +1,15 @@
 ### Makefile to run commands
 
+setup:
+	make setup-front
+	make setup-back
+
+setup-back:
+	cd src/backend
+
+setup-front:
+	cd src/frontend && npm install
+
 # Run backend server
 run-back:
 	docker-compose --file src/backend/docker-compose.yml up --build

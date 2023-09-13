@@ -24,9 +24,16 @@ func (a *YoutubeArticleBuilder) Build(entry article.UnparsedArticleEntry) *model
 	a.Basic(entry).
 		Video(entry).
 		Media(entry).
-		Author(entry)
+		Author(entry).
+		Type()
 
 	return a.article
+}
+
+func (a *YoutubeArticleBuilder) Type() *YoutubeArticleBuilder {
+	a.article.Type = article.YoutubeArticleType
+
+	return a
 }
 
 func (a *YoutubeArticleBuilder) Basic(entry map[string]interface{}) *YoutubeArticleBuilder {

@@ -60,6 +60,7 @@ type Article {
     published: String!
     updated: String!
     media: Media!
+    type: String!
 }
 
 type Query {

@@ -19,8 +19,8 @@ const ActiveFeed = ({ feed, onSelectArticle }: Props) => {
       <span>SELECT FEED BELOW</span>
       <div>
         {feed.url}
-        {articles.map((article, i) => (
-          <div key={i} onClick={() => onSelectArticle(article)}>
+        {articles.map((article) => (
+          <div key={article.id} onClick={() => onSelectArticle(article)}>
             <ArticleCard article={article} />
           </div>
         ))}
