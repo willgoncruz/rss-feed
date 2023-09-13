@@ -1,15 +1,10 @@
-import { Article, ArticleType } from '@types';
+import { Article } from '@types';
 import Head from 'next/head';
 import React from 'react';
-// import ArticleDisplay from '../ArticleDisplay';
-import YoutubeArticleDisplay from '../ArticleDisplay/youtube';
+import ArticleDisplay from '../ArticleDisplay';
 
 type Props = {
   article?: Article;
-};
-
-const ArticleByType = {
-  [ArticleType.Youtube]: YoutubeArticleDisplay,
 };
 
 const ArticleSelected = ({ article }: Props) => {
@@ -17,7 +12,6 @@ const ArticleSelected = ({ article }: Props) => {
     return <div>No article selected ;-;</div>;
   }
 
-  const { media } = article;
   return (
     <div>
       <h1>ARTICLE SELECTED</h1>
@@ -36,8 +30,7 @@ const ArticleSelected = ({ article }: Props) => {
       </div>
       <div>
         Article DISPLAY BELLOW
-        {/* <ArticleDisplay media={article.media} /> */}
-        {React.createElement(ArticleByType[article.type], { media })}
+        <ArticleDisplay type={article.type} media={article.media} />
       </div>
     </div>
   );
