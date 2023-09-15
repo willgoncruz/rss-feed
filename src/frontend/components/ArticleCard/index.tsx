@@ -1,14 +1,15 @@
 import { Article } from '@types';
+import { Card } from 'antd';
 
 type Props = {
   article: Article;
 };
 
 const ArticleCard = ({ article }: Props) => (
-  <div>
+  <Card>
     <h3>{article.title}</h3>
     <h4>A video by {article.author.name}</h4>
-  </div>
+  </Card>
 );
 
 export default ArticleCard;
