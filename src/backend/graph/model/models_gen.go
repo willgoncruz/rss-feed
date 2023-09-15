@@ -4,15 +4,13 @@ package model
 
 type Article struct {
 	ID        string  `json:"id"`
-	VideoID   string  `json:"videoId"`
-	ChannelID string  `json:"channelId"`
-	Title     string  `json:"title"`
-	Link      string  `json:"link"`
-	Author    *Author `json:"author"`
-	Published string  `json:"published"`
-	Updated   string  `json:"updated"`
-	Media     *Media  `json:"media"`
 	Type      string  `json:"type"`
+	Link      string  `json:"link"`
+	Media     *Media  `json:"media"`
+	Title     string  `json:"title"`
+	Author    *Author `json:"author"`
+	Updated   string  `json:"updated"`
+	Published string  `json:"published"`
 }
 
 type Author struct {
@@ -33,10 +31,9 @@ type Content struct {
 }
 
 type Feed struct {
+	ID        string  `json:"id"`
 	URL       string  `json:"url"`
 	Link      string  `json:"link"`
-	ID        string  `json:"id"`
-	ChannelID string  `json:"channelId"`
 	Title     string  `json:"title"`
 	Author    *Author `json:"author"`
 	Published string  `json:"published"`

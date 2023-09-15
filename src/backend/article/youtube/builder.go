@@ -22,7 +22,6 @@ func (a *YoutubeArticleBuilder) Reset() {
 
 func (a *YoutubeArticleBuilder) Build(entry article.UnparsedArticleEntry) *model.Article {
 	a.Basic(entry).
-		Video(entry).
 		Media(entry).
 		Author(entry).
 		Type()
@@ -43,13 +42,6 @@ func (a *YoutubeArticleBuilder) Basic(entry map[string]interface{}) *YoutubeArti
 	a.article.Published = entry["published"].(string)
 
 	a.article.Link = entry["link"].(map[string]interface{})["-href"].(string)
-
-	return a
-}
-
-func (a *YoutubeArticleBuilder) Video(entry map[string]interface{}) *YoutubeArticleBuilder {
-	a.article.VideoID = entry["videoId"].(string)
-	a.article.ChannelID = entry["channelId"].(string)
 
 	return a
 }

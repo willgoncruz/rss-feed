@@ -5,14 +5,12 @@ export enum ArticleType {
 export type Article = {
   __typename?: 'Article';
   author: Author;
-  channelId: String;
   id: String;
   link: String;
   media: Media;
   published: String;
   title: String;
   updated: String;
-  videoId: String;
   type: ArticleType;
 };
 
@@ -39,7 +37,6 @@ export type Content = {
 export type Feed = {
   __typename?: 'Feed';
   author: Author;
-  channelId: String;
   id: String;
   link: String;
   published: String;

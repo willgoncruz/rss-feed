@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@types": ["./src/types"],
-      "@types/*": ["./src/types/*"],
+      "@types": ["./src/frontend/types"],
+      "@types/*": ["./src/frontend/types/*"],
     },
   },
 }
