@@ -60,9 +60,13 @@ func (a *YoutubeArticleBuilder) Author(entry map[string]interface{}) *YoutubeArt
 func (a *YoutubeArticleBuilder) Media(entry map[string]interface{}) *YoutubeArticleBuilder {
 	group := entry["group"].(map[string]interface{})
 	content := group["content"].(map[string]interface{})
+	thumbnail := group["thumbnail"].(map[string]interface{})
 
 	width, _ := strconv.Atoi(content["-width"].(string))
 	height, _ := strconv.Atoi(content["-height"].(string))
+
+	thumbnailWidth, _ := strconv.Atoi(thumbnail["-width"].(string))
+	thumbnailHeight, _ := strconv.Atoi(thumbnail["-height"].(string))
 
 	a.article.Media = &model.Media{
 		Title:       group["title"].(string),
@@ -72,6 +76,11 @@ func (a *YoutubeArticleBuilder) Media(entry map[string]interface{}) *YoutubeArti
 			Type:   content["-type"].(string),
 			Width:  width,
 			Height: height,
+		},
+		Thumbnail: &model.Thumbnail{
+			URL:    thumbnail["-url"].(string),
+			Width:  thumbnailWidth,
+			Height: thumbnailHeight,
 		},
 	}
 

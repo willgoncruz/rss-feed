@@ -17,6 +17,9 @@ const query = (url: string) => gql`
           width
           height
         }
+        thumbnail {
+          url
+        }
       }
     }
   }
