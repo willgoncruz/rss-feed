@@ -9,6 +9,7 @@ import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
 import ArticleSelected from '../../components/ArticleSelected';
 import Modal from '../../components/Modal';
+import { useSelectedArticle } from '../../hooks/articles';
 
 type Props = {
   feeds: Feed[];
@@ -22,6 +23,7 @@ const Container = styled.div`
 
 const FeedListContainer = styled.div`
   flex: 1 1 10%;
+  align-self: flex-start;
 `;
 
 const ActiveFeedContainer = styled.div`
@@ -35,7 +37,7 @@ const Page = styled.div`
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
-  const [article, setArticle] = useState<Article | undefined>();
+  const [article, setArticle] = useSelectedArticle();
 
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
 

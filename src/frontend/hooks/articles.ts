@@ -24,4 +24,10 @@ const useArticles = (feed: Feed | null): Article[] => {
   return articles;
 }
 
-export default useArticles;
+const useSelectedArticle = () => {
+  const [article, setSelectedArticle] = useState<Article | undefined>();
+
+  return [article, setSelectedArticle];
+};
+
+export { useArticles, useSelectedArticle };

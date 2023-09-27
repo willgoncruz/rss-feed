@@ -5,19 +5,19 @@ export enum ArticleType {
 export type Article = {
   __typename?: 'Article';
   author: Author;
-  id: String;
-  link: String;
+  id: string;
+  link: string;
   media: Media;
-  published: String;
-  title: String;
-  updated: String;
+  published: string;
+  title: string;
+  updated: string;
   type: ArticleType;
 };
 
 export type Author = {
   __typename?: 'Author';
-  name: String;
-  uri: String;
+  name: string;
+  uri: string;
 };
 
 export type Community = {
@@ -29,28 +29,28 @@ export type Community = {
 export type Content = {
   __typename?: 'Content';
   height: number;
-  type: String;
-  url: String;
+  type: string;
+  url: string;
   width: number;
 };
 
 export type Feed = {
   __typename?: 'Feed';
   author: Author;
-  id: String;
-  link: String;
-  published: String;
-  title: String;
-  url: String;
+  id: string;
+  link: string;
+  published: string;
+  title: string;
+  url: string;
 };
 
 export type Media = {
   __typename?: 'Media';
   // community: Community;
   content: Content;
-  description: String;
+  description: string;
   thumbnail: Thumbnail;
-  title: String;
+  title: string;
 };
 
 export type StarRating = {
@@ -69,6 +69,6 @@ export type Statistics = {
 export type Thumbnail = {
   __typename?: 'Thumbnail';
   height: number;
-  url: String;
+  url: string;
   width: number;
 };

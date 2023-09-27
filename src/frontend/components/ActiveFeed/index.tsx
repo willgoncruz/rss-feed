@@ -1,7 +1,7 @@
 import { Feed } from '@types';
 import { Space } from 'antd';
 import ArticleCard from '../ArticleCard';
-import useArticles from '../../hooks/articles';
+import { useArticles } from '../../hooks/articles';
 
 type Props = {
   feed: Feed | null;

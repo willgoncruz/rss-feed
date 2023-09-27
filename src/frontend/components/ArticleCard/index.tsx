@@ -18,6 +18,23 @@ const StyledImage = styled(Image)`
   border-radius: 10px;
 `;
 
+const ArticleDescription = styled.div`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+`;
+
+const CardTitle = styled.h3`
+  margin: 0;
+`;
+
+const CardAuthor = styled.h5`
+  margin-top: 0;
+`;
+
 const Card = ({ article }: Props) => (
   <AntdCard
     bordered={false}
@@ -26,9 +43,9 @@ const Card = ({ article }: Props) => (
   >
     <StyledImage alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
     <CardContent>
-      <h3 style={{ margin: 0 }}>{article.title}</h3>
-      <h6>A video by {article.author.name}</h6>
-      <span>{article.media.description}</span>
+      <CardTitle>{article.title}</CardTitle>
+      <CardAuthor>A video by {article.author.name}</CardAuthor>
+      <ArticleDescription>{article.media.description}</ArticleDescription>
     </CardContent>
   </AntdCard>
 );
