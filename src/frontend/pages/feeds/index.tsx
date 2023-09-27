@@ -8,6 +8,7 @@ import apolloClient from '../../client/apollo-client';
 import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
 import ArticleSelected from '../../components/ArticleSelected';
+import Modal from '../../components/Modal';
 
 type Props = {
   feeds: Feed[];
@@ -48,7 +49,12 @@ export default function Feeds({ feeds }: Props) {
         <ActiveFeedContainer>
           <ActiveFeed feed={feed} onSelectArticle={setArticle} />
         </ActiveFeedContainer>
-        <ArticleSelected article={article} />
+
+        {article && (
+          <Modal onCancel={() => setArticle(undefined)}>
+            <ArticleSelected article={article} />
+          </Modal>
+        )}
       </Container>
     </Page>
   );

@@ -13,6 +13,11 @@ const theme: ThemeConfig = {
       headerBg: '#000000',
       actionsBg: '#000000',
     },
+    Modal: {
+      headerBg: '#000000',
+      footerBg: '#000000',
+      contentBg: '#000000',
+    },
   }
 };
 
