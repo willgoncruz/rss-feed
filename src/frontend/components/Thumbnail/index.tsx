@@ -1,12 +1,13 @@
-import { Thumbnail } from '@types';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
+import styled from 'styled-components';
 
-type Props = {
-  image: Thumbnail;
-};
+const StyledImage = styled(Image)`
+  top: 0;
+  left: 0;
+  position: absolute;
+  border-radius: 10px;
+`;
 
-const ArticleCard = ({ image }: Props) => (
-  <Image alt="Card Thumbnail" src={image.url} width={480} height={360} />
-);
+const ThumbnailImage = (props: ImageProps) => <StyledImage {...props} />;
 
-export default ArticleCard;
+export default ThumbnailImage;

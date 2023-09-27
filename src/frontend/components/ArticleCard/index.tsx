@@ -1,7 +1,8 @@
 import { Article } from '@types';
 import { Card as AntdCard } from 'antd';
-import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
+import Thumbnail from '../Thumbnail';
 
 type Props = {
   article: Article;
@@ -9,13 +10,6 @@ type Props = {
 
 const CardContent = styled.div`
   margin-left: 256px;
-`;
-
-const StyledImage = styled(Image)`
-  top: 0;
-  left: 0;
-  position: absolute;
-  border-radius: 10px;
 `;
 
 const ArticleDescription = styled.div`
@@ -41,7 +35,7 @@ const Card = ({ article }: Props) => (
     style={{ width: 960, height: 192 }}
     bodyStyle={{ height: 192, overflow: 'hidden' }}
   >
-    <StyledImage alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
+    <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
     <CardContent>
       <CardTitle>{article.title}</CardTitle>
       <CardAuthor>A video by {article.author.name}</CardAuthor>
@@ -50,6 +44,10 @@ const Card = ({ article }: Props) => (
   </AntdCard>
 );
 
-const ArticleCard = ({ article }: Props) => <Card article={article} />;
+const ArticleCard = ({ article }: Props) => (
+  <Link href={`/feeds/?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
+    <Card article={article} />
+  </Link>
+);
 
 export default ArticleCard;

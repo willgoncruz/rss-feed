@@ -2,14 +2,15 @@ import { gql } from '@apollo/client';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-import { Feed, Article } from '@types';
+import { Feed } from '@types';
+import { useRouter } from 'next/router';
 import apolloClient from '../../client/apollo-client';
 
 import FeedList from '../../components/FeedList';
 import ActiveFeed from '../../components/ActiveFeed';
 import ArticleSelected from '../../components/ArticleSelected';
 import Modal from '../../components/Modal';
-import { useSelectedArticle } from '../../hooks/articles';
+import useArticles from '../../hooks/articles';
 
 type Props = {
   feeds: Feed[];
@@ -37,9 +38,15 @@ const Page = styled.div`
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
-  const [article, setArticle] = useSelectedArticle();
+  const articles = useArticles(feed);
+
+  const {
+    push,
+    query: { articleID },
+  } = useRouter();
 
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
+  const selectedArticle = articles.find((a) => a.id === articleID);
 
   return (
     <Page>
@@ -49,12 +56,12 @@ export default function Feeds({ feeds }: Props) {
           <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
         </FeedListContainer>
         <ActiveFeedContainer>
-          <ActiveFeed feed={feed} onSelectArticle={setArticle} />
+          <ActiveFeed articles={articles} />
         </ActiveFeedContainer>
 
-        {article && (
-          <Modal onCancel={() => setArticle(undefined)}>
-            <ArticleSelected article={article} />
+        {articleID && (
+          <Modal onCancel={() => push('/feeds', '/feeds', { scroll: false })}>
+            <ArticleSelected article={selectedArticle} />
           </Modal>
         )}
       </Container>
