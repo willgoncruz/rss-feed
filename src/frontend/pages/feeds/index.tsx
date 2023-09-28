@@ -28,7 +28,7 @@ const FeedListContainer = styled.div`
 `;
 
 const ActiveFeedContainer = styled.div`
-  flex: 1 1 30%;
+  flex: 1 1 85%;
   margin-left: 16px;
 `;
 
@@ -50,7 +50,6 @@ export default function Feeds({ feeds }: Props) {
 
   return (
     <Page>
-      <h1>Feeds</h1>
       <Container>
         <FeedListContainer>
           <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
@@ -76,6 +75,7 @@ export async function getServerSideProps() {
     query: gql`
       query Feeds {
         feeds {
+          title
           url
         }
       }

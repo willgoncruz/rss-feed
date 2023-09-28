@@ -7,11 +7,14 @@ type Props = {
 };
 
 const ActiveFeed = ({ articles }: Props) => (
-  <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-    {articles.map((article) => (
-      <ArticleCard key={article.id} article={article} />
-    ))}
-  </Space>
+  <>
+    <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+      <h1>Articles</h1>
+      {articles.map((article) => (
+        <ArticleCard key={article.id} article={article} />
+      ))}
+    </Space>
+  </>
 );
 
 export default ActiveFeed;

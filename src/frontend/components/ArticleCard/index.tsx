@@ -8,6 +8,10 @@ type Props = {
   article: Article;
 };
 
+type CardProps = {
+  children: React.ReactNode;
+};
+
 const CardContent = styled.div`
   margin-left: 256px;
 `;
@@ -29,25 +33,27 @@ const CardAuthor = styled.h5`
   margin-top: 0;
 `;
 
-const Card = ({ article }: Props) => (
+const Card = ({ children }: CardProps) => (
   <AntdCard
     bordered={false}
-    style={{ width: 960, height: 192 }}
+    style={{ width: 960, height: 192, margin: '0 auto' }}
     bodyStyle={{ height: 192, overflow: 'hidden' }}
   >
-    <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
-    <CardContent>
-      <CardTitle>{article.title}</CardTitle>
-      <CardAuthor>A video by {article.author.name}</CardAuthor>
-      <ArticleDescription>{article.media.description}</ArticleDescription>
-    </CardContent>
+    {children}
   </AntdCard>
 );
 
 const ArticleCard = ({ article }: Props) => (
-  <Link href={`/feeds/?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
-    <Card article={article} />
-  </Link>
+  <Card>
+    <Link href={`/feeds/?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
+      <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
+      <CardContent>
+        <CardTitle>{article.title}</CardTitle>
+        <CardAuthor>A video by {article.author.name}</CardAuthor>
+        <ArticleDescription>{article.media.description}</ArticleDescription>
+      </CardContent>
+    </Link>
+  </Card>
 );
 
 export default ArticleCard;

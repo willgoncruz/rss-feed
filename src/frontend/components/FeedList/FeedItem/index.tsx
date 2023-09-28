@@ -11,6 +11,6 @@ const Container = styled.div`
   margin-top: 16px;
 `;
 
-const FeedItem = ({ feed }: Props) => <Container>{feed.url}</Container>;
+const FeedItem = ({ feed }: Props) => <Container>{feed.title}</Container>;
 
 export default FeedItem;

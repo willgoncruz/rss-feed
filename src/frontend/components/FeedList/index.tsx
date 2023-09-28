@@ -10,6 +10,7 @@ type Props = {
 
 const FeedList = ({ feeds, onSelectFeed }: Props) => (
   <Container>
+    <h1>Feeds</h1>
     {feeds.map((feed, i) => (
       <FeedLink key={i} onClick={() => onSelectFeed(i)}>
         <FeedItem feed={feed} />
