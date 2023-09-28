@@ -1,47 +1,12 @@
 import { Article } from '@types';
-import { Card as AntdCard } from 'antd';
 import Link from 'next/link';
-import styled from 'styled-components';
+import Card from '../Card';
 import Thumbnail from '../Thumbnail';
+import { ArticleDescription, CardAuthor, CardContent, CardTitle } from './styles';
 
 type Props = {
   article: Article;
 };
-
-type CardProps = {
-  children: React.ReactNode;
-};
-
-const CardContent = styled.div`
-  margin-left: 256px;
-`;
-
-const ArticleDescription = styled.div`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-`;
-
-const CardTitle = styled.h3`
-  margin: 0;
-`;
-
-const CardAuthor = styled.h5`
-  margin-top: 0;
-`;
-
-const Card = ({ children }: CardProps) => (
-  <AntdCard
-    bordered={false}
-    style={{ width: 960, height: 192, margin: '0 auto' }}
-    bodyStyle={{ height: 192, overflow: 'hidden' }}
-  >
-    {children}
-  </AntdCard>
-);
 
 const ArticleCard = ({ article }: Props) => (
   <Card>

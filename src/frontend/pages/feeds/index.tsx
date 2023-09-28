@@ -1,5 +1,4 @@
 import { gql } from '@apollo/client';
-import styled from 'styled-components';
 import { useState } from 'react';
 
 import { Feed } from '@types';
@@ -11,30 +10,11 @@ import ActiveFeed from '../../components/ActiveFeed';
 import ArticleSelected from '../../components/ArticleSelected';
 import Modal from '../../components/Modal';
 import useArticles from '../../hooks/articles';
+import { ActiveFeedContainer, Container, FeedListContainer, Page } from './styles';
 
 type Props = {
   feeds: Feed[];
 };
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-`;
-
-const FeedListContainer = styled.div`
-  flex: 1 1 10%;
-  align-self: flex-start;
-`;
-
-const ActiveFeedContainer = styled.div`
-  flex: 1 1 85%;
-  margin-left: 16px;
-`;
-
-const Page = styled.div`
-  padding: 32px;
-`;
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
