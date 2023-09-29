@@ -2,14 +2,20 @@ package resolvers
 
 import (
 	"context"
+	feed "rss/feed/database"
 	"rss/graph/model"
 )
 
-type FeedResolver struct{}
+type FeedResolver struct {
+	db feed.FeedDatabase
+}
+
+func NewFeedResolver(db feed.FeedDatabase) FeedResolver {
+	return FeedResolver{
+		db: db,
+	}
+}
 
 func (f *FeedResolver) List(ctx context.Context) []*model.Feed {
-	return []*model.Feed{{
-		Title: "Verac",
-		URL:   "https://www.youtube.com/feeds/videos.xml?channel_id=UCtNTsm4XIQf-TNk5nntGTOA",
-	}}
+	return f.db.List()
 }

@@ -55,8 +55,9 @@ export async function getServerSideProps() {
     query: gql`
       query Feeds {
         feeds {
-          title
+          id
           url
+          title
         }
       }
     `,

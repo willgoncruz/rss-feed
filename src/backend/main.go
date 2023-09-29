@@ -4,7 +4,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	feed "rss/feed/database"
 	"rss/graph"
+	"rss/resolvers"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
@@ -30,7 +32,10 @@ func main() {
 		Debug:            true,
 	}).Handler)
 
-	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
+	db := feed.NewFeedDatabase()
+	db.Init()
+
+	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{Feed: resolvers.NewFeedResolver(db)}}))
 
 	router.Handle("/playground", playground.Handler("GraphQL playground", "/"))
 	router.Handle("/", srv)
