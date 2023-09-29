@@ -5,7 +5,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions: {
     watchQuery: {
-      nextFetchPolicy(currentFetchPolicy) {
+      nextFetchPolicy() {
         return "no-cache"
       },
     },

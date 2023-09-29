@@ -12,6 +12,7 @@ import Modal from '../../components/Modal';
 import useArticles from '../../hooks/articles';
 import { ActiveFeedContainer, Container, FeedListContainer, Page } from './styles';
 import NewFeed from '../../components/NewFeed';
+import { LIST_FEEDS } from '../../query';
 
 type Props = {
   feeds: Feed[];
@@ -29,6 +30,8 @@ export default function Feeds({ feeds }: Props) {
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
   const selectedArticle = articles.find((a) => a.id === articleID);
 
+  const closeModal = () => push('/feeds', '/feeds', { scroll: false });
+
   return (
     <Page>
       <Container>
@@ -40,14 +43,14 @@ export default function Feeds({ feeds }: Props) {
         </ActiveFeedContainer>
 
         {articleID && (
-          <Modal onCancel={() => push('/feeds', '/feeds', { scroll: false })}>
+          <Modal onCancel={closeModal}>
             <ArticleSelected article={selectedArticle} />
           </Modal>
         )}
 
         {newFeed && (
-          <Modal onCancel={() => push('/feeds', '/feeds', { scroll: false })}>
-            <NewFeed />
+          <Modal onCancel={closeModal}>
+            <NewFeed onSuccess={closeModal} />
           </Modal>
         )}
       </Container>
@@ -59,15 +62,7 @@ export async function getServerSideProps() {
   const {
     data: { feeds },
   } = await apolloClient.query({
-    query: gql`
-      query Feeds {
-        feeds {
-          id
-          url
-          title
-        }
-      }
-    `,
+    query: LIST_FEEDS,
   });
 
   return {
