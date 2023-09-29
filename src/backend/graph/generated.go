@@ -91,7 +91,7 @@ type ComplexityRoot struct {
 	}
 
 	Mutation struct {
-		RemoveElement func(childComplexity int, id *string) int
+		AddFeed func(childComplexity int, url *string, title *string) int
 	}
 
 	Query struct {
@@ -118,7 +118,7 @@ type ComplexityRoot struct {
 }
 
 type MutationResolver interface {
-	RemoveElement(ctx context.Context, id *string) (*bool, error)
+	AddFeed(ctx context.Context, url *string, title *string) (*model.Feed, error)
 }
 type QueryResolver interface {
 	Feeds(ctx context.Context) ([]*model.Feed, error)
@@ -329,17 +329,17 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Media.Title(childComplexity), true
 
-	case "Mutation.removeElement":
-		if e.complexity.Mutation.RemoveElement == nil {
+	case "Mutation.AddFeed":
+		if e.complexity.Mutation.AddFeed == nil {
 			break
 		}
 
-		args, err := ec.field_Mutation_removeElement_args(context.TODO(), rawArgs)
+		args, err := ec.field_Mutation_AddFeed_args(context.TODO(), rawArgs)
 		if err != nil {
 			return 0, false
 		}
 
-		return e.complexity.Mutation.RemoveElement(childComplexity, args["id"].(*string)), true
+		return e.complexity.Mutation.AddFeed(childComplexity, args["URL"].(*string), args["Title"].(*string)), true
 
 	case "Query.articles":
 		if e.complexity.Query.Articles == nil {
@@ -539,18 +539,27 @@ var parsedSchema = gqlparser.MustLoadSchema(sources...)
 
 // region    ***************************** args.gotpl *****************************
 
-func (ec *executionContext) field_Mutation_removeElement_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
+func (ec *executionContext) field_Mutation_AddFeed_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
 	var arg0 *string
-	if tmp, ok := rawArgs["id"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-		arg0, err = ec.unmarshalOID2ᚖstring(ctx, tmp)
+	if tmp, ok := rawArgs["URL"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("URL"))
+		arg0, err = ec.unmarshalOString2ᚖstring(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
 	}
-	args["id"] = arg0
+	args["URL"] = arg0
+	var arg1 *string
+	if tmp, ok := rawArgs["Title"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("Title"))
+		arg1, err = ec.unmarshalOString2ᚖstring(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["Title"] = arg1
 	return args, nil
 }
 
@@ -1872,8 +1881,8 @@ func (ec *executionContext) fieldContext_Media_community(ctx context.Context, fi
 	return fc, nil
 }
 
-func (ec *executionContext) _Mutation_removeElement(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
-	fc, err := ec.fieldContext_Mutation_removeElement(ctx, field)
+func (ec *executionContext) _Mutation_AddFeed(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	fc, err := ec.fieldContext_Mutation_AddFeed(ctx, field)
 	if err != nil {
 		return graphql.Null
 	}
@@ -1886,7 +1895,7 @@ func (ec *executionContext) _Mutation_removeElement(ctx context.Context, field g
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Mutation().RemoveElement(rctx, fc.Args["id"].(*string))
+		return ec.resolvers.Mutation().AddFeed(rctx, fc.Args["URL"].(*string), fc.Args["Title"].(*string))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -1895,19 +1904,33 @@ func (ec *executionContext) _Mutation_removeElement(ctx context.Context, field g
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(*bool)
+	res := resTmp.(*model.Feed)
 	fc.Result = res
-	return ec.marshalOBoolean2ᚖbool(ctx, field.Selections, res)
+	return ec.marshalOFeed2ᚖrssᚋgraphᚋmodelᚐFeed(ctx, field.Selections, res)
 }
 
-func (ec *executionContext) fieldContext_Mutation_removeElement(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Mutation_AddFeed(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Mutation",
 		Field:      field,
 		IsMethod:   true,
 		IsResolver: true,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			return nil, errors.New("field of type Boolean does not have child fields")
+			switch field.Name {
+			case "id":
+				return ec.fieldContext_Feed_id(ctx, field)
+			case "url":
+				return ec.fieldContext_Feed_url(ctx, field)
+			case "link":
+				return ec.fieldContext_Feed_link(ctx, field)
+			case "title":
+				return ec.fieldContext_Feed_title(ctx, field)
+			case "author":
+				return ec.fieldContext_Feed_author(ctx, field)
+			case "published":
+				return ec.fieldContext_Feed_published(ctx, field)
+			}
+			return nil, fmt.Errorf("no field named %q was found under type Feed", field.Name)
 		},
 	}
 	defer func() {
@@ -1917,7 +1940,7 @@ func (ec *executionContext) fieldContext_Mutation_removeElement(ctx context.Cont
 		}
 	}()
 	ctx = graphql.WithFieldContext(ctx, fc)
-	if fc.Args, err = ec.field_Mutation_removeElement_args(ctx, field.ArgumentMap(ec.Variables)); err != nil {
+	if fc.Args, err = ec.field_Mutation_AddFeed_args(ctx, field.ArgumentMap(ec.Variables)); err != nil {
 		ec.Error(ctx, err)
 		return fc, err
 	}
@@ -4669,9 +4692,9 @@ func (ec *executionContext) _Mutation(ctx context.Context, sel ast.SelectionSet)
 		switch field.Name {
 		case "__typename":
 			out.Values[i] = graphql.MarshalString("Mutation")
-		case "removeElement":
+		case "AddFeed":
 			out.Values[i] = ec.OperationContext.RootResolverMiddleware(innerCtx, func(ctx context.Context) (res graphql.Marshaler) {
-				return ec._Mutation_removeElement(ctx, field)
+				return ec._Mutation_AddFeed(ctx, field)
 			})
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
@@ -5755,22 +5778,6 @@ func (ec *executionContext) marshalOFeed2ᚖrssᚋgraphᚋmodelᚐFeed(ctx conte
 		return graphql.Null
 	}
 	return ec._Feed(ctx, sel, v)
-}
-
-func (ec *executionContext) unmarshalOID2ᚖstring(ctx context.Context, v interface{}) (*string, error) {
-	if v == nil {
-		return nil, nil
-	}
-	res, err := graphql.UnmarshalID(v)
-	return &res, graphql.ErrorOnPath(ctx, err)
-}
-
-func (ec *executionContext) marshalOID2ᚖstring(ctx context.Context, sel ast.SelectionSet, v *string) graphql.Marshaler {
-	if v == nil {
-		return graphql.Null
-	}
-	res := graphql.MarshalID(*v)
-	return res
 }
 
 func (ec *executionContext) unmarshalOString2ᚖstring(ctx context.Context, v interface{}) (*string, error) {

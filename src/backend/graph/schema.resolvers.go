@@ -6,13 +6,12 @@ package graph
 
 import (
 	"context"
-	"fmt"
 	"rss/graph/model"
 )
 
-// RemoveElement is the resolver for the removeElement field.
-func (r *mutationResolver) RemoveElement(ctx context.Context, id *string) (*bool, error) {
-	panic(fmt.Errorf("not implemented: RemoveElement - removeElement"))
+// AddFeed is the resolver for the AddFeed field.
+func (r *mutationResolver) AddFeed(ctx context.Context, url *string, title *string) (*model.Feed, error) {
+	return r.Resolver.Feed.Add(ctx, *url, *title)
 }
 
 // Feeds is the resolver for the feeds field.

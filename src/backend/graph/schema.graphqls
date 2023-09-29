@@ -66,5 +66,5 @@ type Query {
 }
 
 type Mutation {
-  removeElement(id: ID): Boolean
+  AddFeed(URL: String, Title: String): Feed
 }

@@ -54,10 +54,16 @@ func (db *FeedMemoryDatabase) List() []*model.Feed {
 	return results
 }
 
-func (db *FeedMemoryDatabase) CreateOrUpdate(feed *model.Feed) {
+func (db *FeedMemoryDatabase) CreateOrUpdate(feed *model.Feed) error {
 	txn := database.GetMemoryDatabase().Txn(true)
 
-	txn.Insert("feed", feed)
+	err := txn.Insert("feed", feed)
 
-	txn.Commit()
+	if err == nil {
+		txn.Commit()
+	} else {
+		txn.Abort()
+	}
+
+	return err
 }
