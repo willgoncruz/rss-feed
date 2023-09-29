@@ -1,4 +1,6 @@
 import { Feed } from '@types';
+import Link from 'next/link';
+import Button from '../Button';
 import FeedItem from './FeedItem';
 
 import { Container, FeedLink } from './style';
@@ -16,6 +18,10 @@ const FeedList = ({ feeds, onSelectFeed }: Props) => (
         <FeedItem feed={feed} />
       </FeedLink>
     ))}
+
+    <Link href="/feeds?newFeed=true" as="/new/feed" scroll={false}>
+      <Button>Add Feed</Button>
+    </Link>
   </Container>
 );
 

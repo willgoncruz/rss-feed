@@ -10,7 +10,7 @@ type Props = {
 
 const ArticleCard = ({ article }: Props) => (
   <Card>
-    <Link href={`/feeds/?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
+    <Link href={`/feeds?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
       <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
       <CardContent>
         <CardTitle>{article.title}</CardTitle>

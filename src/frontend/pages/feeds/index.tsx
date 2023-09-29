@@ -11,6 +11,7 @@ import ArticleSelected from '../../components/ArticleSelected';
 import Modal from '../../components/Modal';
 import useArticles from '../../hooks/articles';
 import { ActiveFeedContainer, Container, FeedListContainer, Page } from './styles';
+import NewFeed from '../../components/NewFeed';
 
 type Props = {
   feeds: Feed[];
@@ -22,7 +23,7 @@ export default function Feeds({ feeds }: Props) {
 
   const {
     push,
-    query: { articleID },
+    query: { newFeed, articleID },
   } = useRouter();
 
   const onSelectFeed = (index: number) => setFeed(feeds[index]);
@@ -41,6 +42,12 @@ export default function Feeds({ feeds }: Props) {
         {articleID && (
           <Modal onCancel={() => push('/feeds', '/feeds', { scroll: false })}>
             <ArticleSelected article={selectedArticle} />
+          </Modal>
+        )}
+
+        {newFeed && (
+          <Modal onCancel={() => push('/feeds', '/feeds', { scroll: false })}>
+            <NewFeed />
           </Modal>
         )}
       </Container>
