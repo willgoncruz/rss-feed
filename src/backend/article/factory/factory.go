@@ -19,9 +19,9 @@ func Factory() *ArticleFactory {
 
 func (*ArticleFactory) Build(data map[string]interface{}) []*model.Article {
 	articleDirector := director.GetArticleDirector()
-	articleDirector.Decide()
+	articleDirector.Decide(data)
 
-	var entries = data["feed"].(map[string]interface{})["entry"].([]interface{})
+	var entries = articleDirector.List(data)
 
 	var result = []*model.Article{}
 	for _, entryObj := range entries {

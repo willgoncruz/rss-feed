@@ -1,21 +1,16 @@
-import { ArticleType } from '@types';
 import React from 'react';
+import { ArticleType } from '@types';
 import { ArticleDisplayProps } from './props';
+
+import BlogArticleDisplay from './blog';
 import YoutubeArticleDisplay from './youtube';
 
 const ArticleComponentByType = {
+  [ArticleType.Blog]: BlogArticleDisplay,
   [ArticleType.Youtube]: YoutubeArticleDisplay,
 };
 
-const getArticleByType = (type: ArticleType) => {
-  const component = ArticleComponentByType[type];
-
-  if (!component) {
-    return YoutubeArticleDisplay;
-  }
-
-  return component;
-};
+const getArticleByType = (type: ArticleType) => ArticleComponentByType[type] || BlogArticleDisplay;
 
 const ArticleDisplay = ({ type, media }: ArticleDisplayProps) => {
   const component = getArticleByType(type);

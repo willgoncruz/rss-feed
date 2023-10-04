@@ -1,4 +1,5 @@
 export enum ArticleType {
+  Blog = "blog",
   Youtube = "youtube",
 };
 

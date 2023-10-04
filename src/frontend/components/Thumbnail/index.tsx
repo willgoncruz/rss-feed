@@ -1,5 +1,6 @@
-import Image, { ImageProps } from 'next/image';
+import { ImageProps } from 'next/image';
 import styled from 'styled-components';
+import Image from '../Image';
 
 const StyledImage = styled(Image)`
   top: 0;

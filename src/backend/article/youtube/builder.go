@@ -20,6 +20,10 @@ func (a *YoutubeArticleBuilder) Reset() {
 	a.article = &model.Article{}
 }
 
+func (a *YoutubeArticleBuilder) List(data article.UnparsedFeed) article.ArticleEntryList {
+	return data["feed"].(map[string]interface{})["entry"].([]interface{})
+}
+
 func (a *YoutubeArticleBuilder) Build(entry article.UnparsedArticleEntry) *model.Article {
 	a.Basic(entry).
 		Media(entry).
@@ -35,7 +39,7 @@ func (a *YoutubeArticleBuilder) Type() *YoutubeArticleBuilder {
 	return a
 }
 
-func (a *YoutubeArticleBuilder) Basic(entry map[string]interface{}) *YoutubeArticleBuilder {
+func (a *YoutubeArticleBuilder) Basic(entry article.UnparsedArticleEntry) *YoutubeArticleBuilder {
 	a.article.ID = entry["id"].(string)
 	a.article.Title = entry["title"].(string)
 	a.article.Updated = entry["updated"].(string)
@@ -46,7 +50,7 @@ func (a *YoutubeArticleBuilder) Basic(entry map[string]interface{}) *YoutubeArti
 	return a
 }
 
-func (a *YoutubeArticleBuilder) Author(entry map[string]interface{}) *YoutubeArticleBuilder {
+func (a *YoutubeArticleBuilder) Author(entry article.UnparsedArticleEntry) *YoutubeArticleBuilder {
 	author := entry["author"].(map[string]interface{})
 
 	a.article.Author = &model.Author{
@@ -57,7 +61,7 @@ func (a *YoutubeArticleBuilder) Author(entry map[string]interface{}) *YoutubeArt
 	return a
 }
 
-func (a *YoutubeArticleBuilder) Media(entry map[string]interface{}) *YoutubeArticleBuilder {
+func (a *YoutubeArticleBuilder) Media(entry article.UnparsedArticleEntry) *YoutubeArticleBuilder {
 	group := entry["group"].(map[string]interface{})
 	content := group["content"].(map[string]interface{})
 	thumbnail := group["thumbnail"].(map[string]interface{})
