@@ -1,37 +1,41 @@
-import { Article } from '@types';
-import Link, { LinkProps } from 'next/link';
-import styled from 'styled-components';
-import Card from '../Card';
-import Thumbnail from '../Thumbnail';
-import { ArticleDescription, CardAuthor, CardContent, CardTitle } from './styles';
+import { ArticleType } from '@types';
+import Link from 'next/link';
+import React from 'react';
+import BlogArticleCard from './blog';
+import { ArticleCardProps } from './props';
+import YoutubeArticleCard from './youtube';
 
-type Props = {
-  article: Article;
-};
-
-interface BaseCardProps extends Props {
+interface BaseCardProps extends ArticleCardProps {
   children: React.ReactNode;
 }
 
-const stripHTML = (content: string) => content.replace(/(<([^>]+)>)/gi, '');
+type ArticleCardCompoent = (props: ArticleCardProps) => JSX.Element;
 
-const BaseArticleCard = ({ article, children }: BaseCardProps) => (
-  <Card>
-    <Link href={`/feeds?articleID=${article.id}`} as={`/article/${article.id}`} scroll={false}>
-      {children}
-    </Link>
-  </Card>
+const ArticleCardByType: Record<string, ArticleCardCompoent> = {
+  [ArticleType.Blog]: BlogArticleCard,
+  [ArticleType.Youtube]: YoutubeArticleCard,
+};
+
+const Card = ({ article }: ArticleCardProps) => {
+  const Component = ArticleCardByType[article.type] || YoutubeArticleCard;
+  return <Component article={article} />;
+};
+
+const ArticleLink = ({ article, children }: BaseCardProps) => (
+  <Link
+    href={`/feeds?articleID=${article.id}`}
+    as={`/article/${article.id}`}
+    scroll={false}
+    style={{ display: 'inline-block' }}
+  >
+    {children}
+  </Link>
 );
 
-const ArticleCard = ({ article }: Props) => (
-  <BaseArticleCard article={article}>
-    <CardContent>
-      <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
-      <CardTitle>{article.title}</CardTitle>
-      <CardAuthor>A video by {article.author.name}</CardAuthor>
-      <ArticleDescription>{stripHTML(article.media.description)}</ArticleDescription>
-    </CardContent>
-  </BaseArticleCard>
+const ArticleCard = ({ article }: ArticleCardProps) => (
+  <ArticleLink article={article}>
+    <Card article={article} />
+  </ArticleLink>
 );
 
 export default ArticleCard;

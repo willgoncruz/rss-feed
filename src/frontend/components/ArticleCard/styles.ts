@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const CardShortContent = styled.div`
+  margin-top: 180px;
+`;
+
 export const CardContent = styled.div`
   margin-left: 256px;
 `;
