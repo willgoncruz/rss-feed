@@ -6,6 +6,7 @@ import (
 )
 
 type BlogArticleBuilder struct {
+	feed    article.UnparsedFeed
 	article *model.Article
 }
 
@@ -20,6 +21,7 @@ func (a *BlogArticleBuilder) Reset() {
 }
 
 func (a *BlogArticleBuilder) List(data article.UnparsedFeed) article.ArticleEntryList {
+	a.feed = data
 	return data["rss"].(map[string]interface{})["channel"].(map[string]interface{})["item"].([]interface{})
 }
 
@@ -50,11 +52,11 @@ func (a *BlogArticleBuilder) Basic(entry article.UnparsedArticleEntry) *BlogArti
 }
 
 func (a *BlogArticleBuilder) Author(entry article.UnparsedArticleEntry) *BlogArticleBuilder {
-	// author := entry["author"].(map[string]interface{})
+	channel := a.feed["rss"].(map[string]interface{})["channel"].(map[string]interface{})
+	title := channel["title"].(string)
 
 	a.article.Author = &model.Author{
-		URI:  "uri",
-		Name: "Name",
+		Name: title,
 	}
 
 	return a

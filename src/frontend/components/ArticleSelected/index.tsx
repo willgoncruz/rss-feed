@@ -2,10 +2,22 @@ import { Article } from '@types';
 import Head from 'next/head';
 import React from 'react';
 import ArticleDisplay from '../ArticleDisplay';
+import { Subtitle, Title } from './styles';
 
 type Props = {
-  article?: Article;
+  article: Article;
 };
+
+const ContentType = ({ article }: Props) => (
+  <>
+    <div>
+      <b>Content TYPE:</b> {article.media.content.type}
+    </div>
+    <div>
+      <b>Content URL:</b> {article.media.content.url}
+    </div>
+  </>
+);
 
 const ArticleSelected = ({ article }: Props) => {
   if (!article) {
@@ -14,24 +26,14 @@ const ArticleSelected = ({ article }: Props) => {
 
   return (
     <div>
-      <h1>ARTICLE SELECTED</h1>
       <Head>
         <title>{article.title}</title>
         <meta property="og:title" content={article.title} key="title" />
       </Head>
-      <h2>
-        {article.title} - by {article.author.name}
-      </h2>
-      <div>
-        <b>Content TYPE:</b> {article.media.content.type}
-      </div>
-      <div>
-        <b>Content URL:</b> {article.media.content.url}
-      </div>
-      <div>
-        Article DISPLAY BELLOW
-        <ArticleDisplay type={article.type} media={article.media} />
-      </div>
+
+      <Title>{article.title}</Title>
+      <Subtitle>Article by {article.author.name}</Subtitle>
+      <ArticleDisplay type={article.type} media={article.media} />
     </div>
   );
 };

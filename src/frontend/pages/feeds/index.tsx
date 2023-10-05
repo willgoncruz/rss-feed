@@ -42,7 +42,7 @@ export default function Feeds({ feeds }: Props) {
           <ActiveFeed articles={articles} />
         </ActiveFeedContainer>
 
-        {articleID && (
+        {articleID && selectedArticle && (
           <Modal onCancel={closeModal}>
             <ArticleSelected article={selectedArticle} />
           </Modal>
