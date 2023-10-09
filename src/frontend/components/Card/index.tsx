@@ -17,7 +17,7 @@ const Card = ({ children }: CardProps) => (
 const LongCard = ({ children }: CardProps) => (
   <AntdCard
     bordered={false}
-    style={{ width: 960, height: 192, margin: '0 auto' }}
+    style={{ width: 1200, height: 192, margin: '0 auto' }}
     bodyStyle={{ height: 192, overflow: 'hidden' }}
   >
     {children}
