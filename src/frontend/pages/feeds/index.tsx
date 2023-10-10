@@ -1,4 +1,3 @@
-import { gql } from '@apollo/client';
 import { useState } from 'react';
 
 import { Feed } from '@types';
@@ -20,7 +19,7 @@ type Props = {
 
 export default function Feeds({ feeds }: Props) {
   const [feed, setFeed] = useState<Feed | null>(null);
-  const articles = useArticles(feed);
+  const { articles, loading } = useArticles(feed);
 
   const {
     push,
@@ -39,7 +38,7 @@ export default function Feeds({ feeds }: Props) {
           <FeedList feeds={feeds} onSelectFeed={onSelectFeed} />
         </FeedListContainer>
         <ActiveFeedContainer>
-          <ActiveFeed articles={articles} />
+          <ActiveFeed feed={feed} articles={articles} loading={loading} />
         </ActiveFeedContainer>
 
         {articleID && selectedArticle && (

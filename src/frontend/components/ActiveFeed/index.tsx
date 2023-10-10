@@ -1,9 +1,11 @@
-import { Article } from '@types';
+import { Article, Feed } from '@types';
 import { Space } from 'antd';
 import styled from 'styled-components';
 import ArticleCard from '../ArticleCard';
 
 type Props = {
+  feed: Feed | null;
+  loading: boolean;
   articles: Article[];
 };
 
@@ -18,14 +20,17 @@ const Spacing = styled(Space)`
   flex-direction: row;
 `;
 
-const ActiveFeed = ({ articles }: Props) => (
+const ActiveFeed = ({ feed, articles, loading }: Props) => (
   <>
     <h1>Articles</h1>
-    <Spacing direction="vertical" size="middle">
-      {articles.map((article) => (
-        <ArticleCard key={article.id} article={article} />
-      ))}
-    </Spacing>
+    {feed && loading && <h2>Loading...</h2>}
+    {!loading && (
+      <Spacing direction="vertical" size="middle">
+        {articles.map((article) => (
+          <ArticleCard key={article.id} article={article} />
+        ))}
+      </Spacing>
+    )}
   </>
 );
 
