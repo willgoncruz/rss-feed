@@ -1,16 +1,10 @@
-import styled from 'styled-components';
-
 import { Feed } from '@types';
+import { Text } from '../../Typography';
 
 type Props = {
   feed: Feed;
 };
 
-const Container = styled.div`
-  font-size: 16px;
-  margin-top: 16px;
-`;
-
-const FeedItem = ({ feed }: Props) => <Container>{feed.title}</Container>;
+const FeedItem = ({ feed }: Props) => <Text>{feed.title}</Text>;
 
 export default FeedItem;

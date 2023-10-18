@@ -2,6 +2,7 @@ import { Article, Feed } from '@types';
 import { Space } from 'antd';
 import styled from 'styled-components';
 import ArticleCard from '../ArticleCard';
+import { Title } from '../Typography';
 
 type Props = {
   feed: Feed | null;
@@ -22,7 +23,7 @@ const Spacing = styled(Space)`
 
 const ActiveFeed = ({ feed, articles, loading }: Props) => (
   <>
-    <h1>Articles</h1>
+    <Title>Articles</Title>
     {feed && loading && <h2>Loading...</h2>}
     {!loading && (
       <Spacing direction="vertical" size="middle">

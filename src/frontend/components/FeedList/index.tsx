@@ -1,6 +1,7 @@
 import { Feed } from '@types';
 import Link from 'next/link';
 import Button from '../Button';
+import { Title } from '../Typography';
 import FeedItem from './FeedItem';
 
 import { Container, FeedLink } from './style';
@@ -12,7 +13,7 @@ type Props = {
 
 const FeedList = ({ feeds, onSelectFeed }: Props) => (
   <Container>
-    <h1>Feeds</h1>
+    <Title>Feeds</Title>
     {feeds.map((feed, i) => (
       <FeedLink key={i} onClick={() => onSelectFeed(i)}>
         <FeedItem feed={feed} />

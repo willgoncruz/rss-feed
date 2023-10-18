@@ -16,11 +16,3 @@ export const ArticleDescription = styled.div`
   -webkit-box-orient: vertical;
   display: -webkit-box;
 `;
-
-export const CardTitle = styled.h3`
-  margin: 0;
-`;
-
-export const CardAuthor = styled.h5`
-  margin-top: 0;
-`;
