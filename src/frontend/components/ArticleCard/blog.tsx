@@ -1,8 +1,8 @@
 import { Card } from '../Card';
 import Thumbnail from '../Thumbnail';
-import { Description, Subtitle, Text } from '../Typography';
+import { Description, Text } from '../Typography';
 import { ArticleCardProps } from './props';
-import { CardAuthor, CardShortContent, CardTitle } from './styles';
+import { CardShortContent } from './styles';
 
 const BlogArticleCard = ({ article }: ArticleCardProps) => (
   <Card>

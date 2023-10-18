@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  border-right: 1px solid;
+  width: 250px;
   height: 100vh;
   position: fixed;
-  width: 10vw;
+  border-right: 1px solid;
 `;
 
 export const FeedLink = styled.div`
   cursor: pointer;
+`;
+
+export const PaddingContainer = styled.div`
+  padding-right: 8px
 `;

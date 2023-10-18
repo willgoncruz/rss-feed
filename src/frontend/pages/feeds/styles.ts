@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const FeedListContainer = styled.div`
-  flex: 1 1 10%;
+  flex: 1 1 250px;
   align-self: flex-start;
 `;
 

@@ -1,7 +1,8 @@
 import { LongCard } from '../Card';
 import Thumbnail from '../Thumbnail';
+import { Paragraph, Subtitle } from '../Typography';
 import { ArticleCardProps } from './props';
-import { ArticleDescription, CardAuthor, CardContent, CardTitle } from './styles';
+import { ArticleDescription, CardContent } from './styles';
 
 const stripHTML = (content: string) => content.replace(/(<([^>]+)>)/gi, '');
 
@@ -9,8 +10,8 @@ const YoutubeArticleCard = ({ article }: ArticleCardProps) => (
   <LongCard>
     <CardContent>
       <Thumbnail alt="Card Thumbnail" src={article.media.thumbnail.url} width={240} height={180} />
-      <CardTitle>{article.title}</CardTitle>
-      <CardAuthor>A video by {article.author.name}</CardAuthor>
+      <Subtitle>{article.title}</Subtitle>
+      <Paragraph>A video by {article.author.name}</Paragraph>
       <ArticleDescription>{stripHTML(article.media.description)}</ArticleDescription>
     </CardContent>
   </LongCard>
