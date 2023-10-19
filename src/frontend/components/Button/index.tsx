@@ -1,7 +1,7 @@
 import { Button as AntdButton } from 'antd';
 
 type Props = {
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
 };
 

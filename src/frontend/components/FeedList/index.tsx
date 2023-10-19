@@ -1,6 +1,7 @@
 import { Feed } from '@types';
 import Link from 'next/link';
 import Button from '../Button';
+import ThemeSelector from '../ThemeSelector';
 import { Title } from '../Typography';
 import FeedItem from './FeedItem';
 
@@ -25,6 +26,8 @@ const FeedList = ({ feeds, onSelectFeed }: Props) => (
       <Link href="/feeds?newFeed=true" as="/new/feed" scroll={false}>
         <Button>Add Feed</Button>
       </Link>
+
+      <ThemeSelector />
     </PaddingContainer>
   </Container>
 );

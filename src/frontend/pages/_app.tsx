@@ -1,12 +1,31 @@
 import '../styles/globals.css';
+import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
-import { ConfigProvider } from 'antd';
-import Theme from '../theme/config';
+import { ThemeConfig } from 'antd';
+import { createGlobalStyle } from 'styled-components';
+import { ThemeProvider, useThemeContext } from '../theme/context';
 
-export default function App({ Component, pageProps }: AppProps) {
+const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${(props: ThemeConfig) => props.token && props.token.colorBgContainer};
+  }
+`;
+
+const Body = () => {
+  const theme = useThemeContext();
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme.token!.colorBgContainer!;
+  }, [theme]);
+
+  return <GlobalStyle theme={theme} />;
+};
+
+export default function RSSFeed({ Component, pageProps }: AppProps) {
   return (
-    <ConfigProvider theme={Theme}>
+    <ThemeProvider>
+      <Body />
       <Component {...pageProps} />
-    </ConfigProvider>
+    </ThemeProvider>
   );
 }
