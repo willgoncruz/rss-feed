@@ -2,6 +2,7 @@ import { Article, Feed } from '@types';
 import { Space } from 'antd';
 import styled from 'styled-components';
 import ArticleCard from '../ArticleCard';
+import ScrollPanel from '../ScrollPanel';
 import { Title } from '../Typography';
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
   articles: Article[];
 };
 
-const Spacing = styled(Space)`
+export const Spacing = styled(Space)`
   width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -26,11 +27,13 @@ const ActiveFeed = ({ feed, articles, loading }: Props) => (
     <Title>Articles</Title>
     {feed && loading && <h2>Loading...</h2>}
     {!loading && (
-      <Spacing direction="vertical" size="middle">
-        {articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
-        ))}
-      </Spacing>
+      <ScrollPanel>
+        <Spacing direction="vertical" size="middle">
+          {articles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))}
+        </Spacing>
+      </ScrollPanel>
     )}
   </>
 );

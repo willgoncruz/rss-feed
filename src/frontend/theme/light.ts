@@ -5,6 +5,7 @@ const theme: ThemeConfig = {
     borderRadius: 8,
     colorText: '#000000',
     colorPrimary: '#000000',
+    colorBorderBg: '#eaeaea',
     colorBgContainer: '#eaeaea',
   },
   components: {
@@ -17,7 +18,7 @@ const theme: ThemeConfig = {
       footerBg: '#eaeaea',
       contentBg: '#eaeaea',
     },
-  }
+  },
 };
 
 export default theme;

@@ -16,5 +16,5 @@ export const ActiveFeedContainer = styled.div`
 `;
 
 export const Page = styled.div`
-  padding: 32px;
+  padding: 0 32px;
 `;

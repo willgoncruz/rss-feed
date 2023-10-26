@@ -9,9 +9,10 @@ import ActiveFeed from '../../components/ActiveFeed';
 import ArticleSelected from '../../components/ArticleSelected';
 import Modal from '../../components/Modal';
 import useArticles from '../../hooks/articles';
-import { ActiveFeedContainer, Container, FeedListContainer, Page } from './styles';
+import { ActiveFeedContainer, Container, FeedListContainer, Header, Page } from './styles';
 import NewFeed from '../../components/NewFeed';
 import { LIST_FEEDS } from '../../query';
+import { Subtitle } from '../../components/Typography';
 
 type Props = {
   feeds: Feed[];
