@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { ThemeConfig } from 'antd';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider, useThemeContext } from '../theme/context';
+import '../language';
 
 const GlobalStyle = createGlobalStyle`
   body {

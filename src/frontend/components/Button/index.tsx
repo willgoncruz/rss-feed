@@ -1,4 +1,5 @@
 import { Button as AntdButton } from 'antd';
+import { Text } from '../Typography';
 
 type Props = {
   onClick?: () => void;
@@ -7,7 +8,7 @@ type Props = {
 
 const Button = ({ onClick, children }: Props) => (
   <AntdButton onClick={onClick} block>
-    {children}
+    <Text>{children}</Text>
   </AntdButton>
 );
 
