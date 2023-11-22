@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 import { ThemeConfig } from 'antd';
 import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider, useThemeContext } from '../theme/context';
-import '../language';
+import { LanguageProvider } from '../language';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,8 +25,10 @@ const Body = () => {
 export default function RSSFeed({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <Body />
-      <Component {...pageProps} />
+      <LanguageProvider>
+        <Body />
+        <Component {...pageProps} />
+      </LanguageProvider>
     </ThemeProvider>
   );
 }

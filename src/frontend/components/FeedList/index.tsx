@@ -1,6 +1,8 @@
 import { Feed } from '@types';
 import Link from 'next/link';
+import { Row } from 'antd';
 import Button from '../Button';
+import LanguageSelector from '../LanguageSelector';
 import ThemeSelector from '../ThemeSelector';
 import { Title } from '../Typography';
 import FeedItem from './FeedItem';
@@ -27,7 +29,12 @@ const FeedList = ({ feeds, onSelectFeed }: Props) => (
         <Button>Add Feed</Button>
       </Link>
 
-      <ThemeSelector />
+      <Row>
+        <ThemeSelector />
+      </Row>
+      <Row>
+        <LanguageSelector />
+      </Row>
     </PaddingContainer>
   </Container>
 );

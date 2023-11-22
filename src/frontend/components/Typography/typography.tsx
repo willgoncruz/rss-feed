@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 const { Paragraph, Title, Text } = Typography;
 
@@ -8,7 +8,10 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Translate = ({ children }: Props) => <Trans>{children}</Trans>;
+const Translate = ({ children }: Props) => {
+  const { t } = useTranslation();
+  return t(children);
+};
 
 export const TextWrapper = ({ children }: Props) => (
   <Text>
