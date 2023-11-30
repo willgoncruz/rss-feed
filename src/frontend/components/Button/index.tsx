@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Button as AntdButton } from 'antd';
 import { Text } from '../Typography';
 
@@ -7,9 +8,11 @@ type Props = {
 };
 
 const Button = ({ onClick, children }: Props) => (
-  <AntdButton onClick={onClick} block>
-    <Text>{children}</Text>
-  </AntdButton>
+  <motion.div whileTap={{ scale: 0.9 }}>
+    <AntdButton onClick={onClick} block>
+      <Text>{children}</Text>
+    </AntdButton>
+  </motion.div>
 );
 
 export default Button;
