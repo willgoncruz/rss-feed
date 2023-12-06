@@ -6,6 +6,7 @@ import (
 	"os"
 	feed "rss/feed/database"
 	"rss/graph"
+	"rss/portifolio"
 	"rss/resolvers"
 
 	"github.com/99designs/gqlgen/graphql/handler"
@@ -39,6 +40,8 @@ func main() {
 
 	router.Handle("/playground", playground.Handler("GraphQL playground", "/"))
 	router.Handle("/", srv)
+
+	router.HandleFunc("/portifolio", portifolio.HandlePortifolio())
 
 	log.Printf("connect to http://localhost:%s/playground for GraphQL playground", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
