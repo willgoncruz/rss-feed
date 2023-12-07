@@ -68,29 +68,41 @@ templ hello(name string) {
 			margin: 10% 30%;
 			padding: 0;
 		}
+		svg {
+			fill: #EFF7FF;
+		}
 	</style>
 	<div class={background()}>
-		<div>
-			<h1 class={title()}>Hello, I'm { name }</h1>
-
-			@container(yellow()) {
-				<h3>Building web applications and APIs since 2016</h3>
-			}
-
-			@container(violet()) {
-				<h3>Projects</h3>
-
-				@infoContainer() {
-					@icons.Github()
-					@icons.Email()
-					@icons.Linkedin()
-				}
-			}
-
-			@container(green()) {
-				<h3>Experience</h3>
-			}
-
+		<div class={title()}>
+			<h1>Hello, I'm { name }</h1>
+			<h2>Building web applications and APIs since 2016</h2>
 		</div>
+
+		@container(yellow()) {
+			<h1>Languages, Frameworks and Tools</h1>
+
+			@infoContainer() {
+				@icons.HTML()
+				@icons.CSS()
+				@icons.JS()
+				@icons.React()
+				@icons.Golang()
+				@icons.Java()
+			}
+		}
+
+		@container(violet()) {
+			<h3>Projects</h3>
+
+			@infoContainer() {
+				@icons.Github()
+				@icons.Email()
+				@icons.Linkedin()
+			}
+		}
+
+		@container(green()) {
+			<h3>Experience</h3>
+		}
 	</div>
 }
