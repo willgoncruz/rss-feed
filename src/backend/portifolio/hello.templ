@@ -1,11 +1,42 @@
 package portifolio
 
-css background() {
+css yellow() {
+	background-color: #f6ae2d;
 }
 
+css violet() {
+	background-color: #7261A3;
+}
+
+css green() {
+	background-color: #006c67;
+}
+
+css baseContainer() {
+	margin: 64px auto;
+	border-radius: 24px;
+}
+
+css section() {
+	width: 100%;
+	padding: 24px 0;
+	display: inline-block;
+	text-align: center;
+}
+
+templ container(className templ.CSSClass) {
+	<section class={baseContainer(), className} >
+		<div class={section()}>
+			{ children... }
+		</div>
+	</section>
+}
+
+css background() {
+}
 css title() {
 	width: 100%;
-	line-height: 90vh;
+	line-height: 10vh;
 	text-align: center;
 }
 
@@ -16,11 +47,26 @@ templ hello(name string) {
 			font-family: sans-serif;
 			background-color: #0D1821;
 
-			margin: 0;
+			margin: 10% 30%;
 			padding: 0;
 		}
 	</style>
 	<div class={background()}>
-		<h1 class={title()}>Hello, { name }</h1>
+		<div>
+			<h1 class={title()}>Hello, I'm { name }</h1>
+
+			@container(yellow()) {
+				<h3>Building web applications and APIs since 2016</h3>
+			}
+
+			@container(violet()) {
+				<h3>Projects</h3>
+			}
+
+			@container(green()) {
+				<h3>Experience</h3>
+			}
+
+		</div>
 	</div>
 }
