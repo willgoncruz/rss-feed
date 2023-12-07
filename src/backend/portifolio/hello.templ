@@ -1,5 +1,9 @@
 package portifolio
 
+import (
+	"rss/portifolio/icons"
+)
+
 css yellow() {
 	background-color: #f6ae2d;
 }
@@ -19,9 +23,17 @@ css baseContainer() {
 
 css section() {
 	width: 100%;
-	padding: 24px 0;
 	display: inline-block;
 	text-align: center;
+}
+
+css info() {
+	padding: 24px 12px;
+	border-radius: 0 0 24px 24px;
+	background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+
+	display: flex;
+	justify-content: space-around;
 }
 
 templ container(className templ.CSSClass) {
@@ -30,6 +42,12 @@ templ container(className templ.CSSClass) {
 			{ children... }
 		</div>
 	</section>
+}
+
+templ infoContainer() {
+	<div class={info()}>
+		{ children... }
+	</div>
 }
 
 css background() {
@@ -61,6 +79,12 @@ templ hello(name string) {
 
 			@container(violet()) {
 				<h3>Projects</h3>
+
+				@infoContainer() {
+					@icons.Github()
+					@icons.Email()
+					@icons.Linkedin()
+				}
 			}
 
 			@container(green()) {
