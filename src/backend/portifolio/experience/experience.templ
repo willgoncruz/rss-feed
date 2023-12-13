@@ -1,0 +1,133 @@
+package experience
+
+css flex() {
+  display: flex;
+  flex: 1 1;
+  justify-content: space-around;
+}
+
+css experienceMargin() {
+  margin-left: 16px;
+}
+
+css noMargin() {
+  margin: 0;
+}
+
+css titleStyle() {
+  margin: 0;
+}
+
+css tagStyle() {
+  border-radius: 8px;
+  padding: 8px;
+  margin: 0 16px;
+  background-color: #006c67;
+}
+
+templ container() {
+  <div class={flex()}>
+    { children... }
+  </div>
+}
+
+templ period(p string) {
+  <div>
+    {p}
+  </div>
+}
+
+templ info() {
+  <div class={experienceMargin()}>
+    { children... }
+  </div>
+}
+
+templ title(text string) {
+  <h3 class={noMargin()}>
+    {text}
+  </h3>
+}
+
+templ subtitle(text string) {
+  <h4 class={noMargin()}>
+    {text}
+  </h4>
+}
+
+templ description() {
+  <p>
+    { children... }
+  </p>
+}
+
+templ tag(text string) {
+  <span class={tagStyle()}>
+    {text}
+  </span>
+}
+
+templ skills(list []string) {
+  <div>
+  for _, skill := range list {
+    @tag(skill)
+  }
+  </div>
+}
+
+var dextraSkills = []string{"Golang", "React"}
+
+templ dextra() {
+  @container() {
+    @period("2016 - 2021")
+    @info() {
+      @title("Dextra")
+      @subtitle("Junior Engineer")
+      @description() {
+        <span>TODO: Write text for dextra</span>
+      }
+      @skills(dextraSkills)
+    }
+  }
+}
+
+var quintoAndarSkills = []string{"Java", "React"}
+
+templ quintoAndar() {
+  @container() {
+    @period("2022 - 2023")
+    @info() {
+      @title("QuintoAndar")
+      @subtitle("Software Engineer")
+      @description() {
+        <span>TODO: Write text for 5A</span>
+      }
+      @skills(quintoAndarSkills)
+    }
+  }
+}
+
+var globoSkills = []string{"Golang", "React"}
+
+templ globo() {
+  @container() {
+    @period("2023 - Present")
+    @info() {
+      @title("Globo")
+      @subtitle("Senior Engineer")
+      @description() {
+        <span>TODO: Write text for Globo</span>
+      }
+      @skills(globoSkills)
+    }
+  }
+}
+
+templ All() {
+  <div>
+    @globo()
+    @quintoAndar()
+    @dextra()
+  </div>
+}
+
