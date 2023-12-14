@@ -1,13 +1,12 @@
 package experience
 
-css flex() {
-  display: flex;
-  flex: 1 1;
-  justify-content: space-around;
+css grid() {
+  gap: 48px 32px;
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
 css experienceMargin() {
-  margin-left: 16px;
 }
 
 css noMargin() {
@@ -19,20 +18,26 @@ css titleStyle() {
 }
 
 css tagStyle() {
-  border-radius: 8px;
+  display: inline-block;
+
   padding: 8px;
-  margin: 0 16px;
+  margin-right: 16px;
+  border-radius: 8px;
   background-color: #006c67;
 }
 
+css periodStyle() {
+  text-align: right;
+}
+
 templ container() {
-  <div class={flex()}>
+  <div class={grid()}>
     { children... }
   </div>
 }
 
 templ period(p string) {
-  <div>
+  <div class={periodStyle()}>
     {p}
   </div>
 }
@@ -62,9 +67,9 @@ templ description() {
 }
 
 templ tag(text string) {
-  <span class={tagStyle()}>
+  <div class={tagStyle()}>
     {text}
-  </span>
+  </div>
 }
 
 templ skills(list []string) {
@@ -78,56 +83,50 @@ templ skills(list []string) {
 var dextraSkills = []string{"Golang", "React"}
 
 templ dextra() {
-  @container() {
-    @period("2016 - 2021")
-    @info() {
-      @title("Dextra")
-      @subtitle("Junior Engineer")
-      @description() {
-        <span>TODO: Write text for dextra</span>
-      }
-      @skills(dextraSkills)
+  @period("2016 - 2021")
+  @info() {
+    @title("Dextra")
+    @subtitle("Junior Engineer")
+    @description() {
+      <span>TODO: Write text for dextra</span>
     }
+    @skills(dextraSkills)
   }
 }
 
 var quintoAndarSkills = []string{"Java", "React"}
 
 templ quintoAndar() {
-  @container() {
-    @period("2022 - 2023")
-    @info() {
-      @title("QuintoAndar")
-      @subtitle("Software Engineer")
-      @description() {
-        <span>TODO: Write text for 5A</span>
-      }
-      @skills(quintoAndarSkills)
+  @period("2022 - 2023")
+  @info() {
+    @title("QuintoAndar")
+    @subtitle("Software Engineer")
+    @description() {
+      <span>TODO: Write text for 5A</span>
     }
+    @skills(quintoAndarSkills)
   }
 }
 
 var globoSkills = []string{"Golang", "React"}
 
 templ globo() {
-  @container() {
-    @period("2023 - Present")
-    @info() {
-      @title("Globo")
-      @subtitle("Senior Engineer")
-      @description() {
-        <span>TODO: Write text for Globo</span>
-      }
-      @skills(globoSkills)
+  @period("2023 - Present")
+  @info() {
+    @title("Globo")
+    @subtitle("Senior Engineer")
+    @description() {
+      <span>TODO: Write text for Globo</span>
     }
+    @skills(globoSkills)
   }
 }
 
 templ All() {
-  <div>
+  @container() {
     @globo()
     @quintoAndar()
     @dextra()
-  </div>
+  }
 }
 

@@ -52,10 +52,18 @@ templ infoContainer() {
 }
 
 css background() {
+  gap: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
+
+css column() {
+  flex: 1 1 auto;
+}
+
 css title() {
 	width: 100%;
-	line-height: 10vh;
 	text-align: center;
 }
 
@@ -66,48 +74,53 @@ templ hello(name string) {
 			font-family: sans-serif;
 			background-color: #0D1821;
 
-			margin: 10% 30%;
+			margin: 5% 20%;
 			padding: 0;
 		}
 		svg {
 			fill: #EFF7FF;
 		}
 	</style>
-	<div class={background()}>
-		<div class={title()}>
-			<h1>Hello, I'm { name }</h1>
-			<h2>Building web applications and APIs since 2016</h2>
-		</div>
+	
+  <div class={background()}>
+    <div class={column()}>
+      <div class={title()}>
+        <h1>Hello, I'm { name }</h1>
+        <h2>Building web applications and APIs since 2016</h2>
+      </div>
 
-		@container(yellow()) {
-			<h1>Languages, Frameworks and Tools</h1>
+      @container(yellow()) {
+        <h1>Languages, Frameworks and Tools</h1>
 
-			@infoContainer() {
-				@icons.HTML()
-				@icons.CSS()
-				@icons.JS()
-				@icons.React()
-				@icons.Golang()
-				@icons.Java()
-			}
-		}
+        @infoContainer() {
+          @icons.HTML()
+          @icons.CSS()
+          @icons.JS()
+          @icons.React()
+          @icons.Golang()
+          @icons.Java()
+        }
+      }
 
-		@container(violet()) {
-			<h3>Projects</h3>
+      @container(violet()) {
+        <h3>Projects</h3>
 
-			@infoContainer() {
-				@icons.Github()
-				@icons.Email()
-				@icons.Linkedin()
-			}
-		}
+        @infoContainer() {
+          @icons.Github()
+          @icons.Email()
+          @icons.Linkedin()
+        }
+      }
 
-		@container(green()) {
-			<h3>Container</h3>
-		}
+      @container(green()) {
+        <h3>Container</h3>
+      }
+    </div>
 
-    <h2>Professional Experience</h2>
-    @experience.All() {
-    }
-	</div>
+    <div class={column()}>
+      <h1>Professional Experience</h1>
+      @experience.All(){}
+    </div>
+
+</div>
 }
