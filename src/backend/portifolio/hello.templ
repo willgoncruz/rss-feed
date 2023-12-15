@@ -2,19 +2,20 @@ package portifolio
 
 import (
   "rss/portifolio/icons"
+  "rss/portifolio/colors"
   "rss/portifolio/experience"
 )
 
 css yellow() {
-	background-color: #f6ae2d;
+	background-color: {colors.Yellow};
 }
 
 css violet() {
-	background-color: #7261A3;
+	background-color: {colors.Violet};
 }
 
 css green() {
-	background-color: #006c67;
+	background-color: {colors.Green};
 }
 
 css baseContainer() {
@@ -67,10 +68,22 @@ css title() {
 	text-align: center;
 }
 
+templ head(){
+  <head>
+    <title>William Cruz</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+}
+
 templ hello(name string) {
+  <!doctype html>
+  <html>
+    @head()
+    <body>
 	<style type="text/css">
 		body {
-			color: #EFF7FF;
+			color: #EFF7FF; 
 			font-family: sans-serif;
 			background-color: #0D1821;
 
@@ -85,12 +98,22 @@ templ hello(name string) {
   <div class={background()}>
     <div class={column()}>
       <div class={title()}>
-        <h1>Hello, I'm { name }</h1>
-        <h2>Building web applications and APIs since 2016</h2>
+        <h1 class="text-6xl pb-8 font-bold">Hello, I'm { name }</h1>
+        <h2 class="text-4xl py-6">Building web applications and APIs since 2016</h2>
       </div>
 
+      @container(violet()) {
+        <h1 class="text-2xl py-4 font-semibold">Contact me</h1>
+
+        @infoContainer() {
+          @icons.Github()
+          @icons.Email()
+          @icons.Linkedin()
+        }
+      }
+
       @container(yellow()) {
-        <h1>Languages, Frameworks and Tools</h1>
+        <h1 class="text-2xl py-4 font-semibold">Languages, Frameworks and Tools</h1>
 
         @infoContainer() {
           @icons.HTML()
@@ -102,25 +125,16 @@ templ hello(name string) {
         }
       }
 
-      @container(violet()) {
-        <h3>Projects</h3>
-
-        @infoContainer() {
-          @icons.Github()
-          @icons.Email()
-          @icons.Linkedin()
-        }
-      }
-
       @container(green()) {
-        <h3>Container</h3>
+        <h1 class="text-2xl py-4 font-semibold">Projects</h1>
       }
     </div>
 
     <div class={column()}>
-      <h1>Professional Experience</h1>
+      <h1 class="text-3xl mb-4 font-bold">Professional Experience</h1>
       @experience.All(){}
     </div>
-
-</div>
+  </div>
+  </body>
+  </html>
 }

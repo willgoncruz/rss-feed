@@ -1,5 +1,9 @@
 package experience
 
+import (
+  "rss/portifolio/colors"
+)
+
 css grid() {
   gap: 48px 32px;
   display: grid;
@@ -23,11 +27,12 @@ css tagStyle() {
   padding: 8px;
   margin-right: 16px;
   border-radius: 8px;
-  background-color: #006c67;
+  background-color: {colors.Green};
 }
 
 css periodStyle() {
   text-align: right;
+  font-style: italic;
 }
 
 templ container() {
@@ -49,15 +54,15 @@ templ info() {
 }
 
 templ title(text string) {
-  <h3 class={noMargin()}>
+  <h2 class="text-2xl font-semibold">
     {text}
-  </h3>
+  </h2>
 }
 
 templ subtitle(text string) {
-  <h4 class={noMargin()}>
+  <h3 class="text-base font-normal">
     {text}
-  </h4>
+  </h3>
 }
 
 templ description() {
@@ -73,7 +78,7 @@ templ tag(text string) {
 }
 
 templ skills(list []string) {
-  <div>
+  <div class="mt-4">
   for _, skill := range list {
     @tag(skill)
   }
@@ -88,7 +93,21 @@ templ dextra() {
     @title("Dextra")
     @subtitle("Junior Engineer")
     @description() {
-      <span>TODO: Write text for dextra</span>
+      <div>
+        <h4 class="text-xl my-2">Media Group - Digital footprint</h4>
+        <ul class="list-image-none">
+          <li>Maintenance on company legacy sites</li>
+          <li>New consumer pages on React</li>
+          <li>LGPD (GPDR) implementation on main systems in Golang</li>
+        </ul>
+
+        <h4 class="text-xl my-2">Compliance and Due Diligence</h4>
+        <ul class="list-image-none">
+          <li>Maintenance on old codebase using Java and Javascript</li>
+          <li>Google search for company due diligence, made in AWS Lambda and DynamoDB</li>
+          <li>Microservices architecture using Java</li>
+        </ul>
+      </div>
     }
     @skills(dextraSkills)
   }
@@ -102,7 +121,13 @@ templ quintoAndar() {
     @title("QuintoAndar")
     @subtitle("Software Engineer")
     @description() {
-      <span>TODO: Write text for 5A</span>
+      <div>
+        <h4 class="text-xl my-2">Startup - Housing Market</h4>
+        <ul class="list-image-none">
+          <li>Worked on system for scheduling visits for potential costumers</li>
+          <li>Backstage for managing agent's calendar</li>
+        </ul>
+      </div>
     }
     @skills(quintoAndarSkills)
   }
@@ -116,7 +141,12 @@ templ globo() {
     @title("Globo")
     @subtitle("Senior Engineer")
     @description() {
-      <span>TODO: Write text for Globo</span>
+      <h4 class="text-xl my-2">Media Group - Streaming</h4>
+      <ul class="list-image-none">
+        <li>Streaming app for company media distribution on Smart TVs</li>
+        <li>Devise strategies for implementation in sprawling TV market</li>
+        <li>Implementing BFFs (Backend For Frontend) for app necessity</li>
+      </ul>
     }
     @skills(globoSkills)
   }
