@@ -22,11 +22,6 @@ css titleStyle() {
 }
 
 css tagStyle() {
-  display: inline-block;
-
-  padding: 8px;
-  margin-right: 16px;
-  border-radius: 8px;
   background-color: {colors.Green};
 }
 
@@ -72,7 +67,7 @@ templ description() {
 }
 
 templ tag(text string) {
-  <div class={tagStyle()}>
+  <div class={"rounded-full py-2 px-5 mr-4 inline-block", tagStyle()}>
     {text}
   </div>
 }

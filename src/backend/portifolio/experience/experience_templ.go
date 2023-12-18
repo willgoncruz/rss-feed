@@ -58,10 +58,6 @@ func titleStyle() templ.CSSClass {
 
 func tagStyle() templ.CSSClass {
 	var templ_7745c5c3_CSSBuilder strings.Builder
-	templ_7745c5c3_CSSBuilder.WriteString(`display:inline-block;`)
-	templ_7745c5c3_CSSBuilder.WriteString(`padding:8px;`)
-	templ_7745c5c3_CSSBuilder.WriteString(`margin-right:16px;`)
-	templ_7745c5c3_CSSBuilder.WriteString(`border-radius:8px;`)
 	templ_7745c5c3_CSSBuilder.WriteString(string(templ.SanitizeCSS(`background-color`, colors.Green)))
 	templ_7745c5c3_CSSID := templ.CSSID(`tagStyle`, templ_7745c5c3_CSSBuilder.String())
 	return templ.ComponentCSSClass{
@@ -328,7 +324,7 @@ func tag(text string) templ.Component {
 			templ_7745c5c3_Var13 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var14 = []any{tagStyle()}
+		var templ_7745c5c3_Var14 = []any{"rounded-full py-2 px-3 mr-3 inline-block", tagStyle()}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var14...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
