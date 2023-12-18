@@ -68,6 +68,12 @@ css title() {
 	text-align: center;
 }
 
+templ link(href templ.SafeURL) {
+  <a href={href} target="_blank">
+    { children... }
+  </a>
+}
+
 templ head(){
   <head>
     <title>William Cruz</title>
@@ -108,9 +114,15 @@ templ hello(name string) {
         <h1 class="text-2xl py-4 font-semibold">Contact me</h1>
 
         @infoContainer() {
-          @icons.Github()
-          @icons.Email()
-          @icons.Linkedin()
+          @link("https://github.com/willgoncruz") {
+            @icons.Github()
+          }
+          @link("mailto:william.gon.cruz.t3dbn@slmail.me") {
+            @icons.Email()
+          }
+          @link("https://github.com/willgoncruz") {
+            @icons.Linkedin()
+          }
         }
       }
 
