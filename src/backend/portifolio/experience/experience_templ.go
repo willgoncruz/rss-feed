@@ -324,7 +324,7 @@ func tag(text string) templ.Component {
 			templ_7745c5c3_Var13 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		var templ_7745c5c3_Var14 = []any{"rounded-full py-2 px-3 mr-3 inline-block", tagStyle()}
+		var templ_7745c5c3_Var14 = []any{"rounded-full py-2 px-5 mr-4 inline-block", tagStyle()}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var14...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

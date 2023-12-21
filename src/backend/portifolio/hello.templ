@@ -3,6 +3,7 @@ package portifolio
 import (
   "rss/portifolio/icons"
   "rss/portifolio/colors"
+  "rss/portifolio/projects"
   "rss/portifolio/experience"
 )
 
@@ -29,12 +30,14 @@ css section() {
 	text-align: center;
 }
 
-css info() {
-	padding: 24px 12px;
+css gradient() {
 	border-radius: 0 0 24px 24px;
 	background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
 
-	display: flex;
+css info() {
+	padding: 24px 12px;
+  display: flex;
 	justify-content: space-around;
 }
 
@@ -47,7 +50,7 @@ templ container(className templ.CSSClass) {
 }
 
 templ infoContainer() {
-	<div class={info()}>
+	<div class={info(), gradient()}>
 		{ children... }
 	</div>
 }
@@ -141,6 +144,11 @@ templ hello(name string) {
 
       @container(green()) {
         <h1 class="text-2xl py-4 font-semibold">Projects</h1>
+
+        <div class={"px-8 text-left", gradient()}>
+          @projects.Emulator()
+          @projects.Portifolio()
+        </div>
       }
     </div>
 

@@ -7,7 +7,7 @@ tmp_dir = "tmp"
 
 [build]
 # Just plain old shell command. You could use `make` as well.
-cmd = "go build -o ./tmp/rss-feed-bff ./"
+cmd = "templ generate && go build -o ./tmp/rss-feed-bff ./"
 
 # Binary file yields from `cmd`.
 bin = "tmp/"
@@ -20,10 +20,11 @@ full_bin = "./tmp/rss-feed-bff"
 log = "air_errors.log"
 
 # Watch these filename extensions.
-include_ext = ["go", "yaml"]
+include_ext = ["go", "templ", "yaml"]
 
 # Ignore these filename extensions or directories.
 exclude_dir = ["tmp"]
+exclude_regex = [".*_templ.go"]
 
 # It's not necessary to trigger build each time file changes if it's too frequent.
 delay = 1000 # ms

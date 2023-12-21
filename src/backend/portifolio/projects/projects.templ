@@ -1,0 +1,25 @@
+package projects
+
+import (
+  "rss/portifolio/icons"
+)
+
+templ project(name string, description string, url templ.SafeURL) {
+  <a class="hover:underline" href={url} target="_blank">
+    <div class="py-4 flex justify-between">
+        <div>
+          <h3 class="text-xl font-semibold">{name}</h3>
+          <h4 class="">{description}</h4>
+        </div>
+        @icons.Link()
+    </div>
+  </a>
+}
+
+templ Emulator() {
+  @project("NES Emulator", "An NES emulator implementation in Python", "https://github.com/nes-emulator/Core")
+}
+
+templ Portifolio() {
+  @project("Portifolio", "This very site you are visiting, powered by HTMX", "https://github.com/willgoncruz/rss-feed")
+}
