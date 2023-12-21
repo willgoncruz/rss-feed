@@ -136,8 +136,8 @@ templ hello(name string) {
           @icons.HTML()
           @icons.CSS()
           @icons.JS()
-          @icons.React()
-          @icons.Golang()
+          @icons.React(icons.Props{ Element: "react" })
+          @icons.Golang(icons.Props{ Element: "golang" })
           @icons.Java()
         }
       }
@@ -148,6 +148,7 @@ templ hello(name string) {
         <div class={"px-8 text-left", gradient()}>
           @projects.Emulator()
           @projects.Portifolio()
+          @projects.RSSFeed()
         </div>
       }
     </div>

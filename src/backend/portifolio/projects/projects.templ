@@ -4,22 +4,31 @@ import (
   "rss/portifolio/icons"
 )
 
-templ project(name string, description string, url templ.SafeURL) {
+templ project(name string, description string, url templ.SafeURL, techStack... templ.Component) {
   <a class="hover:underline" href={url} target="_blank">
     <div class="py-4 flex justify-between">
-        <div>
-          <h3 class="text-xl font-semibold">{name}</h3>
-          <h4 class="">{description}</h4>
+        <div> 
+          <div>
+            for _, icon := range techStack {
+              <div class="inline-block mr-2 align-middle">@icon</div>
+            }
+            <h3 class="hover:underline inline-block text-xl font-semibold align-middle">{name}</h3>
+          </div>
+          <h4 class="my-1">{description}</h4>
         </div>
-        @icons.Link()
+        @icons.BoundLink()
     </div>
   </a>
 }
 
 templ Emulator() {
-  @project("NES Emulator", "An NES emulator implementation in Python", "https://github.com/nes-emulator/Core")
+  @project("NES Emulator", "An NES emulator implementation in Python", "https://github.com/nes-emulator/Core", icons.Python())
 }
 
 templ Portifolio() {
-  @project("Portifolio", "This very site you are visiting, powered by HTMX", "https://github.com/willgoncruz/rss-feed")
+  @project("Portifolio", "This very site you are visiting, powered by HTMX", "https://github.com/willgoncruz/rss-feed", icons.Golang(icons.Props{ Element: "golang-portifolio" }))
+}
+
+templ RSSFeed() {
+  @project("RSS Feed", "An implementation of an RSS feed", "https://github.com/willgoncruz/rss-feed", icons.React(icons.Props{ Element: "react-rss" }), icons.Golang(icons.Props{ Element: "golang-rss" }))
 }

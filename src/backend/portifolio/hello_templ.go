@@ -613,7 +613,7 @@ func hello(name string) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = icons.React().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = icons.React(icons.Props{Element: "react"}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -621,7 +621,7 @@ func hello(name string) templ.Component {
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
-				templ_7745c5c3_Err = icons.Golang().Render(ctx, templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = icons.Golang(icons.Props{Element: "golang"}).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -692,6 +692,10 @@ func hello(name string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			templ_7745c5c3_Err = projects.Portifolio().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = projects.RSSFeed().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
